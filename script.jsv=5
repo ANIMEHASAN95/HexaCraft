@@ -1,0 +1,843 @@
+// Init Lucide icons
+document.addEventListener('DOMContentLoaded', () => {
+    if (window.lucide) lucide.createIcons();
+});
+
+// ── PROMO COPY ──
+function copyCode() {
+    navigator.clipboard.writeText('HEXA26').then(() => {
+        const btn = document.querySelector('.promo-copy-btn');
+        if (!btn) return;
+        btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+        setTimeout(() => {
+            btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+        }, 1500);
+    });
+}
+
+// ── PROMO BAR DISMISS — fixes navbar jump ──
+function closePromoBar() {
+    const bar = document.getElementById('promo-bar');
+    if (!bar) return;
+    bar.style.transition = 'max-height 0.35s ease, opacity 0.35s ease, padding 0.35s ease';
+    bar.style.maxHeight = bar.offsetHeight + 'px';
+    bar.style.overflow = 'hidden';
+    requestAnimationFrame(() => {
+        bar.style.maxHeight = '0';
+        bar.style.opacity = '0';
+        bar.style.paddingTop = '0';
+        bar.style.paddingBottom = '0';
+    });
+    setTimeout(() => {
+        bar.style.display = 'none';
+        updateNavbar(); // recalculate navbar position
+    }, 380);
+}
+
+// Hook the close button
+document.addEventListener('DOMContentLoaded', () => {
+    const closeBtn = document.querySelector('.promo-close');
+    if (closeBtn) {
+        closeBtn.onclick = closePromoBar;
+    }
+});
+
+// ── NAVBAR: transparent at top, solidifies when scrolled ──
+function updateNavbar() {
+    const nav = document.getElementById('navbar');
+    const promo = document.getElementById('promo-bar');
+    if (!nav) return;
+    const ph = (promo && promo.style.display !== 'none' && promo.offsetParent !== null)
+        ? promo.offsetHeight : 0;
+
+    // adjust navbar top based on scroll to push it below promo when at top
+    nav.style.top = Math.max(0, ph - window.scrollY) + 'px';
+
+    // navbar uses margin-top internally, so just track scroll state
+    nav.classList.toggle('scrolled', window.scrollY > ph + 10);
+}
+window.addEventListener('scroll', updateNavbar, { passive: true });
+window.addEventListener('resize', updateNavbar);
+document.addEventListener('DOMContentLoaded', updateNavbar);
+
+// ── NAVBAR TOGGLE MOBILE MENU ──
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileBtn = document.getElementById('mobile-btn');
+    const navLinks = document.querySelector('.nav-links');
+    if (mobileBtn && navLinks) {
+        mobileBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            if (window.lucide) {
+                const icon = mobileBtn.querySelector('i');
+                if (icon) {
+                    if (navLinks.classList.contains('open')) {
+                        icon.setAttribute('data-lucide', 'x');
+                    } else {
+                        icon.setAttribute('data-lucide', 'menu');
+                    }
+                    lucide.createIcons();
+                }
+            }
+        });
+    }
+});
+
+// ── LENIS SMOOTH SCROLL ──
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof Lenis !== 'undefined') {
+        const lenis = new Lenis({
+            duration: 1.4,
+            easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothWheel: true,
+            wheelMultiplier: 0.85,
+            touchMultiplier: 1.5,
+        });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+    }
+});
+
+// ── PRELOADER ──
+window.addEventListener('load', () => {
+    const p = document.getElementById('preloader');
+    if (p) {
+        setTimeout(() => {
+            p.style.opacity = '0';
+            setTimeout(() => p.remove(), 650);
+        }, 600);
+    }
+});
+
+// ── HERO CAROUSEL ──
+const slides = document.querySelectorAll('.hero-slide');
+const games = ['Minecraft', 'VPS'];
+const stats = [
+    { loc: 'USA', srv: '50K+ servers', reg: 'South', g: '+6% today' },
+    { loc: 'India', srv: '150K+ servers', reg: 'Asia', g: '+4% today' },
+];
+let cur = 0;
+
+function goSlide(idx) {
+    const oldActive = document.querySelector('.hero-slide.active');
+
+    // Force DOM reflow to restart CSS animation correctly
+    slides.forEach(s => s.classList.remove('prev', 'active'));
+    void slides[idx].offsetWidth;
+
+    if (oldActive) oldActive.classList.add('prev');
+    slides[idx].classList.add('active');
+
+    const gEl = document.getElementById('hero-game');
+    if (gEl) {
+        gEl.style.opacity = '0'; gEl.style.transform = 'translateY(10px)';
+        const pAmt = document.getElementById('hero-price-amt');
+        const pSub = document.getElementById('hero-price-sub');
+        if (pAmt) pAmt.style.opacity = '0';
+        if (pSub) pSub.style.opacity = '0';
+
+        setTimeout(() => {
+            gEl.textContent = games[idx];
+            gEl.style.transition = 'all .35s'; gEl.style.opacity = '1'; gEl.style.transform = 'translateY(0)';
+
+            if (pAmt && pSub) {
+                if (games[idx] === 'VPS') {
+                    pAmt.textContent = '₹299';
+                    pSub.textContent = '/month';
+                } else {
+                    pAmt.textContent = '₹20';
+                    pSub.textContent = '/month (VPS from ₹299)';
+                }
+                pAmt.style.transition = 'all .35s'; pAmt.style.opacity = '1';
+                pSub.style.transition = 'all .35s'; pSub.style.opacity = '1';
+            }
+        }, 180);
+    }
+    const s = stats[idx] || stats[0];
+    const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+    set('h-loc', s.loc); set('h-srv', s.srv); set('h-reg', s.reg); set('h-growth', s.g);
+}
+
+if (slides.length) setInterval(() => { cur = (cur + 1) % slides.length; goSlide(cur); }, 4500);
+
+// ── STATS COUNTER ──
+const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target, target = +el.dataset.t, dur = 1800, start = performance.now();
+        const tick = now => {
+            const p = Math.min((now - start) / dur, 1);
+            el.textContent = Math.round((1 - Math.pow(1 - p, 3)) * target).toLocaleString();
+            if (p < 1) requestAnimationFrame(tick); else el.textContent = target.toLocaleString();
+        };
+        requestAnimationFrame(tick);
+        obs.unobserve(el);
+    });
+}, { threshold: 0.5 });
+document.querySelectorAll('.snum').forEach(el => obs.observe(el));
+
+// ── FAQ ACCORDION ──
+document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.fq')?.addEventListener('click', () => {
+        const open = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!open) item.classList.add('open');
+        if (window.lucide) lucide.createIcons();
+    });
+});
+
+// ── FAQ TABS ──
+document.querySelectorAll('.ftab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        document.querySelectorAll('.ftab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const g = tab.dataset.g;
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.style.display = (g === 'all' || item.dataset.g === g) ? '' : 'none';
+        });
+        if (window.lucide) lucide.createIcons();
+    });
+});
+
+// ── FAQ SEARCH ──
+document.querySelector('.faq-search')?.addEventListener('input', e => {
+    const q = e.target.value.toLowerCase();
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.style.display = item.textContent.toLowerCase().includes(q) ? '' : 'none';
+    });
+});
+
+// ── PING TEST ──
+function doPing() {
+    const btn = document.querySelector('.sec-net .btn-green');
+    const msg = document.getElementById('ping-msg');
+    const st = document.getElementById('sl-status');
+    const ids = [['p-mum', 15], ['p-pun', 18], ['p-che', 22], ['p-sin', 55], ['p-hkg', 75]];
+    if (btn) { btn.innerHTML = '<i data-lucide="loader-2" width="16" height="16" style="animation: spin 1s linear infinite;"></i> Scanning...'; lucide.createIcons({ root: btn }); btn.style.pointerEvents = 'none'; }
+    if (st) { st.textContent = 'RUNNING'; st.style.color = '#22c55e'; st.style.background = 'rgba(34,197,94,.1)'; }
+    ids.forEach(el => { const e = document.getElementById(el[0]); if (e) { e.textContent = '...'; e.className = 'slp'; } });
+    let i = 0;
+    const iv = setInterval(() => {
+        if (i >= ids.length) {
+            clearInterval(iv);
+            if (btn) { btn.innerHTML = '<i data-lucide="activity" width="16" height="16"></i> Test Again'; lucide.createIcons({ root: btn }); btn.style.pointerEvents = ''; }
+            if (msg) msg.textContent = '✓ Complete! Closest: Mumbai (15ms)';
+            if (st) { st.textContent = 'IDLE'; st.style.color = ''; st.style.background = ''; }
+            return;
+        }
+        const [id, ms] = ids[i++];
+        const el = document.getElementById(id);
+        if (el) { el.textContent = ms + ' ms'; el.className = 'slp ' + (ms < 60 ? 'ok' : ms < 120 ? 'med' : ''); }
+    }, 650);
+}
+
+// ── SCROLL REVEAL (card entry animations) ──
+const rev = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.classList.add('rv');
+            rev.unobserve(e.target);
+        }
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.gfc,.wcard,.pc,.sl-row,.tp-card,.hcard').forEach((el, i) => {
+    el.style.cssText += 'opacity:0;transform:translateY(28px);transition:opacity .55s ease ' + (i % 4 * 80) + 'ms,transform .55s cubic-bezier(0.22,1,0.36,1) ' + (i % 4 * 80) + 'ms';
+    rev.observe(el);
+});
+document.head.insertAdjacentHTML('beforeend', '<style>.rv{opacity:1!important;transform:translateY(0)!important;}</style>');
+
+// ── PANEL SIDEBAR ──
+document.querySelectorAll('.psi').forEach(p => {
+    p.addEventListener('click', () => {
+        document.querySelectorAll('.psi').forEach(x => x.classList.remove('active'));
+        p.classList.add('active');
+        const tab = p.getAttribute('data-tab');
+        const pluginView = document.querySelector('.plugin-view');
+        const configView = document.querySelector('.config-view');
+        if (pluginView && configView) {
+            if (tab === 'plugins') { pluginView.style.display = 'flex'; configView.style.display = 'none'; }
+            else { pluginView.style.display = 'none'; configView.style.display = 'flex'; }
+        }
+    });
+});
+
+// ── PERFORMANCE CAROUSEL ──
+const pSlider = document.getElementById('perf-slider');
+const pDots = document.querySelectorAll('.pd');
+const pPauseBtn = document.getElementById('perf-pause');
+let pCur = 0, pInterval, pIsPaused = false;
+
+function goPerfSlide(idx) {
+    pCur = idx;
+    if (pSlider) pSlider.style.transform = `translateX(-${pCur * 50}%)`;
+    pDots.forEach((d, i) => d.classList.toggle('active', i === pCur));
+}
+function nextPerfSlide() { pCur = (pCur + 1) % 2; goPerfSlide(pCur); }
+function startPerfAuto() {
+    if (pInterval) clearInterval(pInterval);
+    if (!pIsPaused) pInterval = setInterval(nextPerfSlide, 5000);
+}
+if (pSlider) {
+    startPerfAuto();
+    pDots.forEach((d, i) => d.addEventListener('click', () => { goPerfSlide(i); startPerfAuto(); }));
+    if (pPauseBtn) {
+        pPauseBtn.addEventListener('click', () => {
+            pIsPaused = !pIsPaused;
+            if (pIsPaused) { pPauseBtn.innerHTML = '<i data-lucide="play" width="14" height="14"></i>'; clearInterval(pInterval); }
+            else { pPauseBtn.innerHTML = '<i data-lucide="pause" width="14" height="14"></i>'; startPerfAuto(); }
+            if (window.lucide) lucide.createIcons();
+        });
+    }
+}
+
+// ── TRUSTPILOT COMING SOON TOAST ──
+function showToast(msg) {
+    let t = document.getElementById('__toast');
+    if (!t) {
+        t = document.createElement('div');
+        t.id = '__toast';
+        t.style.cssText = 'position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(16px);background:rgba(10,14,30,0.95);color:#fff;border:1px solid rgba(59,130,246,0.35);border-radius:12px;padding:14px 28px;font-size:15px;font-weight:600;letter-spacing:-0.02em;z-index:99998;box-shadow:0 8px 32px rgba(0,0,0,0.4);backdrop-filter:blur(16px);transition:all 0.35s cubic-bezier(0.22,1,0.36,1);opacity:0;pointer-events:none;';
+        document.body.appendChild(t);
+    }
+    t.textContent = msg;
+    requestAnimationFrame(() => {
+        t.style.opacity = '1';
+        t.style.transform = 'translateX(-50%) translateY(0)';
+    });
+    clearTimeout(t._timer);
+    t._timer = setTimeout(() => {
+        t.style.opacity = '0';
+        t.style.transform = 'translateX(-50%) translateY(12px)';
+    }, 2800);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Trustpilot click → Coming Soon toast (removed tp-card, tp-logo, and sec-trust a to allow linking to Trustpilot)
+    document.querySelectorAll('.billing-btn, .nav-client-btn').forEach(el => {
+        el.addEventListener('click', e => { e.preventDefault(); showToast('⭐ Coming Soon!'); });
+    });
+});
+
+// ── DYNAMIC PLAN CALCULATOR ──
+// --- ADVANCED CALCULATOR ---
+(function () {
+    // Data Modeled exactly after HexaCraft pricing grid
+    const budgetPlans = [
+        { name: "DIRT", price: "₹20", cat: "Budget", ram: 2 },
+        { name: "STONE", price: "₹40", cat: "Budget", ram: 4 },
+        { name: "IRON", price: "₹80", cat: "Budget", ram: 8 },
+        { name: "REDSTONE", price: "₹160", cat: "Budget", ram: 16 },
+        { name: "GOLD", price: "₹320", cat: "Budget", ram: 32 },
+        { name: "EMERALD", price: "₹480", cat: "Budget", ram: 48 },
+        { name: "NETHERITE", price: "₹640", cat: "Budget", ram: 64 }
+    ];
+
+    const perfPlans = [
+        { name: "DIRT", price: "₹40", cat: "Performance", ram: 2 },
+        { name: "STONE", price: "₹80", cat: "Performance", ram: 4 },
+        { name: "IRON", price: "₹160", cat: "Performance", ram: 8 },
+        { name: "REDSTONE", price: "₹320", cat: "Performance", ram: 16 },
+        { name: "GOLD", price: "₹640", cat: "Performance", ram: 32 },
+        { name: "EMERALD", price: "₹960", cat: "Performance", ram: 48 },
+        { name: "NETHERITE", price: "₹1280", cat: "Performance", ram: 64 }
+    ];
+
+    const premPlans = [
+        { name: "DIRT", price: "₹80", cat: "Premium", ram: 2 },
+        { name: "STONE", price: "₹160", cat: "Premium", ram: 4 },
+        { name: "IRON", price: "₹320", cat: "Premium", ram: 8 },
+        { name: "REDSTONE", price: "₹640", cat: "Premium", ram: 16 },
+        { name: "GOLD", price: "₹1280", cat: "Premium", ram: 32 },
+        { name: "EMERALD", price: "₹1920", cat: "Premium", ram: 48 },
+        { name: "NETHERITE", price: "₹2560", cat: "Premium", ram: 64 }
+    ];
+
+    let calcCtx = {
+        players: 12,
+        mods: 0,
+        type: 'Spigot/Paper',
+        version: '1.21.x',
+        light: 10,
+        med: 5,
+        heavy: 0,
+        mode: 0 // 0=Auto, 1=Budget, 2=Power
+    };
+
+    const E = {
+        plr: document.getElementById('calcPlayers'), pVal: document.getElementById('calcPlayersVal'), pFill: document.getElementById('playersFill'),
+        mods: document.getElementById('calcMods'), mVal: document.getElementById('calcModsVal'), mFill: document.getElementById('modsFill'),
+        lght: document.getElementById('pLight'), lVal: document.getElementById('pLightV'), lFill: document.getElementById('lFill'),
+        med: document.getElementById('pMed'), m2Val: document.getElementById('pMedV'), m2Fill: document.getElementById('mFill'),
+        hvy: document.getElementById('pHeavy'), hVal: document.getElementById('pHeavyV'), hFill: document.getElementById('hFill'),
+
+        ram: document.getElementById('calcRamVal'),
+        tierGlider: document.getElementById('tierGlider'),
+        arch: document.getElementById('archStatus'), tps: document.getElementById('tpsStatus'),
+        fBtn: document.getElementById('finalBtnSpan'),
+
+        c1n: document.getElementById('cp1-name'), c1p: document.getElementById('cp1-price'), c1c: document.getElementById('cp1-cat'),
+        c2n: document.getElementById('cp2-name'), c2p: document.getElementById('cp2-price'), c2c: document.getElementById('cp2-cat'),
+        c3n: document.getElementById('cp3-name'), c3p: document.getElementById('cp3-price'), c3c: document.getElementById('cp3-cat')
+    };
+
+    if (!E.plr) return; // not on page
+
+    function updateFill(sliderEl, fillEl, pVal) {
+        let percent = ((sliderEl.value - sliderEl.min) / (sliderEl.max - sliderEl.min)) * 100;
+        if (fillEl) fillEl.style.width = percent + '%';
+        if (pVal) pVal.textContent = sliderEl.value;
+    }
+
+    function hookSlider(sl, fill, val, key) {
+        sl.addEventListener('input', () => {
+            calcCtx[key] = parseInt(sl.value);
+            updateFill(sl, fill, val);
+            recalc();
+        });
+        updateFill(sl, fill, val);
+    }
+
+    hookSlider(E.plr, E.pFill, E.pVal, 'players');
+    hookSlider(E.mods, E.mFill, E.mVal, 'mods');
+    hookSlider(E.lght, E.lFill, E.lVal, 'light');
+    hookSlider(E.med, E.m2Fill, E.m2Val, 'med');
+    hookSlider(E.hvy, E.hFill, E.hVal, 'heavy');
+
+    // Advanced Accordion
+    const aBtn = document.getElementById('advToggle');
+    const aChv = document.getElementById('advChevron');
+    const aCon = document.getElementById('advContent');
+    if (aBtn) {
+        aBtn.addEventListener('click', () => {
+            const isO = aCon.style.height && aCon.style.height !== '0px';
+            aCon.style.height = isO ? '0px' : aCon.scrollHeight + 'px';
+            aChv.style.transform = isO ? 'rotate(0deg)' : 'rotate(180deg)';
+        });
+    }
+
+    // Reset plugins
+    document.getElementById('resetPlugins')?.addEventListener('click', () => {
+        E.lght.value = 0; E.med.value = 0; E.hvy.value = 0;
+        E.lght.dispatchEvent(new Event('input'));
+        E.med.dispatchEvent(new Event('input'));
+        E.hvy.dispatchEvent(new Event('input'));
+    });
+
+    // Custom Dropdowns
+    ['type', 'version'].forEach(k => {
+        const btn = document.getElementById(k + 'Btn');
+        const menu = document.getElementById(k + 'Menu');
+        const span = document.getElementById('selected' + (k === 'type' ? 'Type' : 'Version'));
+        if (!btn) return;
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = menu.style.opacity === '1';
+            document.querySelectorAll('[id$="Menu"]').forEach(m => { m.style.opacity = '0'; m.style.pointerEvents = 'none'; m.style.transform = 'translateY(-10px)'; });
+            if (!isOpen) {
+                menu.style.opacity = '1'; menu.style.pointerEvents = 'auto'; menu.style.transform = 'translateY(0)';
+            }
+        });
+        menu.querySelectorAll('button').forEach(item => {
+            item.addEventListener('click', () => {
+                menu.querySelectorAll('button').forEach(i => { i.classList.replace('text-white', 'text-blue-200'); i.classList.remove('font-semibold'); });
+                item.classList.replace('text-blue-200', 'text-white'); item.classList.add('font-semibold');
+                const t = item.textContent;
+                span.textContent = t;
+                calcCtx[k] = t;
+                // Add minor multiplier for modern versions
+                if (k === 'version') recalc();
+                // Add minor multiplier for modpacks
+                if (k === 'type') {
+                    if (t === 'Forge/Fabric' && calcCtx.mods < 30) { E.mods.value = 30; E.mods.dispatchEvent(new Event('input')); }
+                    recalc();
+                }
+            });
+        });
+    });
+
+    // Close dropdowns on document click
+    document.addEventListener('click', () => {
+        document.querySelectorAll('[id$="Menu"]').forEach(m => { m.style.opacity = '0'; m.style.pointerEvents = 'none'; m.style.transform = 'translateY(-10px)'; });
+    });
+
+    // Tier segment
+    const tierBtns = document.querySelectorAll('.tier-btn');
+    tierBtns.forEach((b) => {
+        b.addEventListener('click', () => {
+            const idx = parseInt(b.dataset.idx);
+            calcCtx.mode = idx;
+            E.tierGlider.style.left = `calc(${idx * 33.333}% + 4px)`;
+            tierBtns.forEach(tb => { tb.classList.replace('text-white', 'text-blue-300'); });
+            b.classList.replace('text-blue-300', 'text-white');
+            recalc();
+        });
+    });
+
+    // Quick Presets
+    document.querySelectorAll('#calcPresets button').forEach(b => {
+        b.addEventListener('click', () => {
+            document.querySelectorAll('#calcPresets button').forEach(bc => {
+                bc.className = "group relative px-4 py-3 rounded-2xl bg-white/5 border border-white/5 text-blue-100 font-medium transition-all hover:bg-blue-500/10 hover:border-blue-400/20 active:scale-95";
+            });
+            b.className = "group relative px-4 py-3 rounded-2xl bg-blue-500/15 border border-blue-400/30 text-white font-semibold transition-all shadow-[0_0_15px_rgba(59,130,246,0.2)]";
+            let d = b.dataset.preset;
+            if (d === 'survival') { setSl(12, 0, 10, 5, 0); }
+            if (d === 'skyblock') { setSl(30, 0, 25, 20, 5); }
+            if (d === 'light') { setSl(5, 50, 0, 0, 0); }
+            if (d === 'heavy') { setSl(15, 150, 0, 0, 0); }
+        });
+    });
+
+    function setSl(p, m, l, md, h) {
+        E.plr.value = p; E.mods.value = m; E.lght.value = l; E.med.value = md; E.hvy.value = h;
+        [E.plr, E.mods, E.lght, E.med, E.hvy].forEach(s => s.dispatchEvent(new Event('input')));
+    }
+
+    function recalc() {
+        // Base math calculation
+        let pBase = Math.ceil(calcCtx.players / 8);
+        let mBase = Math.ceil(calcCtx.mods / 30);
+        let plugBase = Math.ceil(calcCtx.light * 0.05) + Math.ceil(calcCtx.med * 0.15) + Math.ceil(calcCtx.heavy * 0.5);
+        let verMul = (calcCtx.version.includes('1.21') || calcCtx.version.includes('1.20') || calcCtx.version.includes('1.19')) ? 1.5 : 0;
+
+        // Total Ram Required
+        let calculated = Math.max(2, pBase + mBase + plugBase + verMul);
+        calculated = Math.ceil(calculated);
+
+        E.ram.textContent = calculated;
+
+        // Visual Status
+        if (calculated < 6) { E.arch.innerHTML = '<i data-lucide="check-circle" class="w-4 h-4 text-green-400 mr-1"></i> Stable'; E.tps.innerHTML = '<i data-lucide="check-circle" class="w-4 h-4 text-green-400 mr-1"></i> Nominal'; }
+        else if (calculated < 12) { E.arch.innerHTML = '<i data-lucide="check-circle" class="w-4 h-4 text-green-400 mr-1"></i> Excellent'; E.tps.innerHTML = '<i data-lucide="check-circle" class="w-4 h-4 text-green-400 mr-1"></i> Low Risk'; }
+        else { E.arch.innerHTML = '<i data-lucide="check-circle" class="w-4 h-4 text-green-400 mr-1"></i> Excellent'; E.tps.innerHTML = '<i data-lucide="check-circle" class="w-4 h-4 text-green-400 mr-1"></i> Zero Risk'; }
+
+        // Find best match loop
+        let listToUse = budgetPlans;
+        if (calcCtx.mode === 1) { listToUse = perfPlans; }
+        else if (calcCtx.mode === 2) { listToUse = premPlans; }
+
+        // Find the index in listToUse that covers the ram
+        let bestIdx = listToUse.findIndex(pl => pl.ram >= calculated);
+        if (bestIdx === -1) bestIdx = listToUse.length - 1; // max out
+
+        let iLow = Math.max(0, bestIdx - 1);
+        let iMid = bestIdx;
+        let iHigh = Math.min(listToUse.length - 1, bestIdx + 1);
+
+        if (iMid === 0 && listToUse.length > 2) { iHigh = 2; }
+        if (iMid === listToUse.length - 1 && listToUse.length > 2) { iLow = listToUse.length - 3; }
+
+        let p_l = listToUse[iLow], p_m = listToUse[iMid], p_r = listToUse[iHigh];
+
+        E.c1n.textContent = p_l.name; E.c1p.textContent = p_l.price; E.c1c.textContent = p_l.cat;
+        E.c2n.textContent = p_m.name; E.c2p.textContent = p_m.price; E.c2c.textContent = p_m.cat;
+        E.c3n.textContent = p_r.name; E.c3p.textContent = p_r.price; E.c3c.textContent = p_r.cat;
+
+        E.fBtn.textContent = p_m.name;
+
+        if (window.lucide) lucide.createIcons();
+    }
+
+    // Switch cards on click
+    document.querySelectorAll('.calc-pc').forEach((card, ci) => {
+        card.addEventListener('click', () => {
+            const arr = [0, 1, 2]; // represents the 3 currently displayed
+            // Ideally we'd just link these to checkout or highlight... simpler: just visually highlight
+            // Due to time, leaving it standard click -> jumps to pricing
+            window.location.href = '#pricing';
+        });
+    });
+
+})();
+
+// ==========================================
+// ── GLOBAL HEXABOT INTEGRATION ──
+// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+    // Clean up any legacy inline chatbots from old HTML files
+    document.querySelectorAll('.chatbot-btn, .chatbot-container').forEach(el => el.remove());
+
+    // Inject 1: Premium Styles (Includes word-wrap fix for "HI" bug)
+    const style = document.createElement('style');
+    style.innerHTML = `
+        :root {
+            --hb-bot-grad: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            --hb-bot-primary: #3b82f6;
+            --hb-bot-bg: #0f172a;
+            --hb-bot-bg-alt: #0f172a;
+            --hb-bot-text: #f8fafc;
+            --hb-bot-text-muted: #94a3b8;
+            --hb-msg-user: linear-gradient(135deg, #2563eb, #3b82f6);
+            --hb-input-bg: #1e293b;
+            --hb-input-border: #334155;
+        }
+        #hb-open-btn.hb-bot-btn {
+            position: fixed; bottom: 30px; right: 30px; width: 64px; height: 64px;
+            background: #2563eb !important; border: none !important; border-radius: 50% !important;
+            display: flex; align-items: center; justify-content: center;
+            color: #ffffff !important; cursor: pointer; z-index: 9999;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4) !important;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        #hb-open-btn.hb-bot-btn:hover { transform: scale(1.08) translateY(-4px); }
+        #hb-open-btn.hb-bot-btn::before { display: none; }
+        
+        #hb-container {
+            position: fixed; bottom: 110px; right: 30px; width: 440px; height: 680px; max-height: calc(100vh - 140px);
+            background: var(--hb-bot-bg) !important; border-radius: 24px !important;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6) !important; display: flex; flex-direction: column; overflow: hidden;
+            font-family: 'Inter', sans-serif; color: var(--hb-bot-text) !important; border: 1px solid rgba(255,255,255,0.05) !important; z-index: 9998;
+            opacity: 0; pointer-events: none; transform: scale(0.9) translateY(20px); transition: 0.4s;
+        }
+        #hb-container.active { opacity: 1; pointer-events: auto; transform: scale(1) translateY(0); }
+
+        #hb-container .cb-header {
+            background: var(--hb-bot-grad) !important; padding: 22px 24px !important; display: flex; align-items: center;
+            justify-content: space-between; color: #ffffff !important; border-radius: 24px 24px 0 0 !important;
+            border-bottom: 2px solid rgba(255,255,255,0.05) !important;
+        }
+        #hb-container .cb-logo {
+            width: 42px !important; height: 42px !important; border-radius: 10px !important; background: rgba(255,255,255,0.1) !important;
+            display: flex !important; align-items: center !important; justify-content: center !important; backdrop-filter: blur(8px) !important;
+            border: 1px solid rgba(255,255,255,0.2) !important; box-shadow: none !important;
+        }
+        #hb-container .cb-logo img { width: 26px !important; max-width: 26px !important; object-fit: contain !important; filter: none !important; }
+        
+        #hb-container .cb-icon-btn {
+            background: transparent !important; border: none !important; color: rgba(255,255,255,0.8) !important; width: 28px !important; height: 28px !important;
+            border-radius: 8px !important; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: 0.3s;
+        }
+        #hb-container .cb-icon-btn:hover { background: rgba(255,255,255,0.2) !important; color: #ffffff !important; }
+
+        #hb-container .cb-login, #hb-container .cb-chat { display: flex; flex-direction: column; flex: 1; background: transparent !important; }
+        #hb-container .cb-login { padding: 32px 24px !important; overflow-y: auto !important; }
+        #hb-container .cb-chat { height: 100% !important; overflow: hidden !important; display: none; }
+        #hb-container .cb-messages { flex: 1 !important; padding: 24px !important; overflow-y: auto !important; display: flex !important; flex-direction: column !important; gap: 20px !important; background: transparent !important; }
+        
+        #hb-container .cb-msg { display: flex !important; gap: 12px !important; max-width: 90% !important; animation: cbSlideUp 0.3s forwards !important; opacity: 1 !important; transform: none !important; }
+        @keyframes cbSlideUp { to { opacity: 1; transform: translateY(0); } }
+        #hb-container .cb-sent { align-self: flex-end !important; flex-direction: row-reverse !important; }
+        #hb-container .cb-received { align-self: flex-start !important; flex-direction: row !important; }
+        
+        #hb-container .cb-avatar {
+            width: 36px !important; height: 36px !important; border-radius: 10px !important; background: rgba(59, 130, 246, 0.15) !important;
+            display: flex !important; align-items: center !important; justify-content: center !important; flex-shrink: 0 !important;
+            border: 1px solid rgba(59, 130, 246, 0.3) !important; box-shadow: none !important;
+        }
+        #hb-container .cb-avatar img { width: 22px !important; max-width: 22px !important; object-fit: contain !important; filter: none !important; }
+
+        #hb-container .cb-msg-bubble {
+            padding: 12px 16px !important; font-size: 14.5px !important; line-height: 1.5 !important;
+            overflow-wrap: anywhere !important; word-break: normal !important; white-space: pre-wrap !important;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2) !important; text-align: left !important; width: fit-content !important; max-width: 100% !important; margin: 0 !important; 
+        }
+        #hb-container .cb-sent .cb-msg-bubble { background: var(--hb-msg-user) !important; color: #ffffff !important; border-radius: 18px 18px 4px 18px !important; border: none !important; }
+        #hb-container .cb-received .cb-msg-bubble { background: var(--hb-input-bg) !important; color: var(--hb-bot-text) !important; border-radius: 18px 18px 18px 4px !important; border: 1px solid var(--hb-input-border) !important; }
+        
+        #hb-container .bot-typing { display: flex !important; gap: 6px !important; padding: 14px 18px !important; background: var(--hb-input-bg) !important; border-radius: 16px 16px 16px 4px !important; border: 1px solid var(--hb-input-border) !important; width: fit-content !important; box-shadow: none !important; align-items: center !important;}
+        #hb-container .bot-typing span { width: 8px !important; height: 8px !important; background: #cbd5e1 !important; border-radius: 50% !important; animation: typing 1.4s infinite !important; }
+        #hb-container .bot-typing span:nth-child(1) { animation-delay: -0.32s; }
+        #hb-container .bot-typing span:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes typing { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+
+        #hb-container .cb-input-area { padding: 16px 24px 24px !important; position: relative !important; background: var(--hb-bot-bg) !important; display: block !important;}
+        #hb-container .cb-input-inner { display: flex !important; background: var(--hb-input-bg) !important; border-radius: 12px !important; padding: 6px !important; border: 1px solid var(--hb-input-border) !important; transition: 0.3s !important; box-shadow: none !important; align-items: center !important; }
+        #hb-container .cb-input-inner:focus-within { border-color: rgba(59, 130, 246, 0.6) !important; box-shadow: 0 0 0 2px rgba(59,130,246,0.1) !important; background: var(--hb-input-bg) !important;}
+        #hb-container .cb-input-inner input { flex:1 !important; background: transparent !important; border: none !important; padding: 12px 14px !important; outline: none !important; color: #fff !important; font-size: 14.5px !important;}
+        #hb-container .cb-send-btn { width:42px !important; height:42px !important; background: #2563eb !important; border: none !important; border-radius: 10px !important; color: white !important; display: flex !important; align-items:center !important; justify-content:center !important; cursor: pointer !important; transition: 0.2s !important; margin-right:2px !important;}
+        #hb-container .cb-send-btn:hover { background: #1d4ed8 !important; transform: none !important; box-shadow: none !important;}
+        
+        #hb-container .cb-form { display: flex !important; flex-direction: column !important; gap: 16px !important; background: transparent !important; padding: 0 16px !important; margin-top:24px !important; border: none !important; box-shadow: none !important;}
+        #hb-container .cb-lbl-wrap { display: flex !important; flex-direction: column !important; gap: 6px !important; }
+        #hb-container .cb-lbl-wrap label { font-size: 13px !important; color: #9ca3af !important; font-weight: 500 !important; display: block !important; text-align: left !important;}
+        #hb-container .cb-input-wrap { display: flex !important; align-items: center !important; width: 100% !important; background: var(--hb-input-bg) !important; border: 1px solid var(--hb-input-border) !important; border-radius: 8px !important; overflow: hidden !important; transition: 0.3s !important; }
+        #hb-container .cb-input-icon { padding: 0 12px !important; color: #6b7280 !important; display:flex !important; align-items:center !important; }
+        #hb-container .cb-input-wrap input { flex: 1 !important; background: transparent !important; border: none !important; padding: 14px 16px !important; padding-left: 0 !important; font-size: 14px !important; color: #fff !important; outline:none !important; }
+        #hb-container .cb-input-wrap:focus-within { border-color: #3b82f6 !important; box-shadow: 0 0 0 2px rgba(59,130,246,0.1) !important; }
+        #hb-container .cb-start-form-btn { background: var(--hb-bot-grad) !important; color: white !important; border: none !important; padding: 16px !important; border-radius: 10px !important; font-weight: 700 !important; cursor: pointer !important; transition: 0.3s !important; display: flex !important; justify-content: center !important; margin-top: 12px !important; font-size: 15px !important; box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4) !important;}
+        #hb-container .cb-start-form-btn:hover { transform: translateY(-2px) !important; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.6) !important; }
+        #hb-container .tawkto-branding { display: none !important; }
+        @media(max-width:600px) {
+            #hb-container { right: 16px !important; bottom: 90px !important; width: auto !important; left: 16px !important; }
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Inject 2: DOM
+    const rawDOM = `
+        <button class="hb-bot-btn" id="hb-open-btn">
+            <!-- Default closed state icon: Message Square -->
+            <i data-lucide="message-square" id="hb-icon-closed" width="28" height="28"></i>
+            <!-- Open state icon: X -->
+            <i data-lucide="x" id="hb-icon-open" width="28" height="28" style="display:none;"></i>
+        </button>
+
+        <div class="hb-bot-container" id="hb-container" style="border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 30px 80px rgba(0,0,0,0.6);">
+            <div class="cb-header">
+                <div class="cb-h-left" style="display: flex; align-items: center; gap: 16px;">
+                    <div class="cb-logo"><img src="assets/logo.png" alt="HexaCraft"></div>
+                    <div style="display:flex; flex-direction:column;">
+                        <div style="font-size:17px; font-weight:700; line-height:1; color:#ffffff;">HexaCraft AI</div>
+                        <div style="font-size:12px; color:#93c5fd; margin-top:6px; display:flex; align-items:center; gap:6px;">
+                            <span class="cb-dot" style="width:8px;height:8px;border-radius:50%;background:#10b981;box-shadow: 0 0 8px #10b981;"></span> Online & Active
+                        </div>
+                    </div>
+                </div>
+                <div class="cb-h-right" style="display:flex; gap:6px;">
+                    <button class="cb-icon-btn"><i data-lucide="maximize-2" width="16" height="16"></i></button>
+                    <button class="cb-icon-btn" id="hb-close-btn"><i data-lucide="x" width="18" height="18"></i></button>
+                </div>
+            </div>
+
+            <div class="cb-login" id="hb-login">
+                <div style="font-size: 22px; font-weight: 700; text-align: center; margin-top: 12px; margin-bottom: 8px; color: #ffffff;">Welcome! 👋</div>
+                <p style="text-align: center; font-size: 14px; color: var(--hb-bot-text-muted); padding: 0 20px; margin-bottom: 8px;">Please fill in your details to begin your chat session.</p>
+                
+                <form class="cb-form" id="hb-login-form">
+                    <div class="cb-lbl-wrap">
+                        <label>Name</label>
+                        <div class="cb-input-wrap">
+                            <i data-lucide="user" width="16" height="16" class="cb-input-icon"></i>
+                            <input type="text" id="hb-user-name" placeholder="John Doe" required>
+                        </div>
+                    </div>
+                    <div class="cb-lbl-wrap">
+                        <label>Email</label>
+                        <div class="cb-input-wrap">
+                            <i data-lucide="mail" width="16" height="16" class="cb-input-icon"></i>
+                            <input type="email" placeholder="john@example.com" required>
+                        </div>
+                    </div>
+                    <div class="cb-lbl-wrap">
+                        <label>Phone Number</label>
+                        <div class="cb-input-wrap">
+                            <i data-lucide="phone" width="16" height="16" class="cb-input-icon"></i>
+                            <input type="tel" placeholder="+91 98765 43210" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="cb-start-form-btn">Start Chat</button>
+                </form>
+            </div>
+
+            <div class="cb-chat" id="hb-chat">
+                <div class="cb-messages" id="hb-messages"></div>
+                <div class="cb-input-area">
+                    <div class="cb-input-inner">
+                        <input type="text" id="hb-chat-input" placeholder="Type a message..." autocomplete="off">
+                        <button id="hb-send-btn" class="cb-send-btn"><i data-lucide="send" width="18" height="18"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', rawDOM);
+    if (window.lucide) lucide.createIcons();
+
+    // Inject 3: Logic
+    const cCont = document.getElementById('hb-container');
+    const cOpen = document.getElementById('hb-open-btn');
+    const cClose = document.getElementById('hb-close-btn');
+    const loginF = document.getElementById('hb-login-form');
+    const uName = document.getElementById('hb-user-name');
+    const lView = document.getElementById('hb-login');
+    const cView = document.getElementById('hb-chat');
+    const mCont = document.getElementById('hb-messages');
+    const cInput = document.getElementById('hb-chat-input');
+    const cSend = document.getElementById('hb-send-btn');
+
+    // Force explicit initial states
+    lView.style.display = 'flex';
+    cView.style.display = 'none';
+
+    cOpen.addEventListener('click', () => {
+        if (cCont.classList.contains('active')) {
+            cCont.classList.remove('active');
+            document.getElementById('hb-icon-closed').style.display = 'block';
+            document.getElementById('hb-icon-open').style.display = 'none';
+        } else {
+            cCont.classList.add('active');
+            document.getElementById('hb-icon-closed').style.display = 'none';
+            document.getElementById('hb-icon-open').style.display = 'block';
+        }
+    });
+
+    cClose.addEventListener('click', () => {
+        cCont.classList.remove('active');
+        document.getElementById('hb-icon-closed').style.display = 'block';
+        document.getElementById('hb-icon-open').style.display = 'none';
+    });
+
+    const API_URL = "https://text.pollinations.ai/";
+
+    // Construct base context payload explicitly for the Chatbot Memory
+    const systemInstruction = "You are the support AI for HexaCraft Hosting (https://hexacraft.fun). Your goal is to help users explicitly with Game Server Hosting. HexaCraft provides affordable, high-performance servers in global datacenters (Mumbai, Pune, Singapore). Premium plans start at exactly ₹249 for Minecraft and max out at ₹1,149 for 12GB RAM. Our VPS plans feature AMD Epyc processors. You must keep your responses EXTREMELY short and friendly like a live chat representative. Do not use markdown format formatting like bold or headers. Answer simply like a text message.";
+
+    let chatHist = [
+        { "role": "system", "content": systemInstruction }
+    ];
+
+    loginF.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const n = uName.value || 'Guest';
+        lView.style.display = 'none';
+        cView.style.display = 'flex';
+        mCont.innerHTML = `
+            <div class="cb-msg cb-received" style="transform:scale(1)!important; opacity:1!important;">
+                <div class="cb-avatar"><img src="assets/logo.png" style="width:16px;"></div>
+                <div class="cb-msg-bubble">Welcome to HexaCraft, ${n}! 👋<br><br>How can I help you find the perfect game server today?</div>
+            </div>`;
+        if (window.lucide) lucide.createIcons();
+    });
+
+    const S = () => { try { const ctx = new (window.AudioContext || window.webkitAudioContext)(); const o = ctx.createOscillator(), g = ctx.createGain(); o.connect(g); g.connect(ctx.destination); o.type = 'sine'; o.frequency.setValueAtTime(300, ctx.currentTime); o.frequency.exponentialRampToValueAtTime(600, ctx.currentTime + .1); g.gain.setValueAtTime(0, ctx.currentTime); g.gain.linearRampToValueAtTime(.1, ctx.currentTime + .02); g.gain.exponentialRampToValueAtTime(.01, ctx.currentTime + .15); o.start(); o.stop(ctx.currentTime + .2); } catch (e) { } };
+    const R = () => { try { const ctx = new (window.AudioContext || window.webkitAudioContext)(); const o = ctx.createOscillator(), g = ctx.createGain(); o.connect(g); g.connect(ctx.destination); o.type = 'sine'; o.frequency.setValueAtTime(700, ctx.currentTime); o.frequency.exponentialRampToValueAtTime(1000, ctx.currentTime + .1); g.gain.setValueAtTime(0, ctx.currentTime); g.gain.linearRampToValueAtTime(.1, ctx.currentTime + .02); g.gain.exponentialRampToValueAtTime(.01, ctx.currentTime + .25); o.start(); o.stop(ctx.currentTime + .3); } catch (e) { } };
+
+    async function pushMsg() {
+        const text = cInput.value.trim();
+        if (!text) return;
+        cInput.value = '';
+        mCont.innerHTML += `<div class="cb-msg cb-sent"><div class="cb-msg-bubble">${text}</div></div>`;
+        S();
+        setTimeout(() => mCont.scrollTo({ top: mCont.scrollHeight, behavior: 'smooth' }), 50);
+        chatHist.push({ "role": "user", "content": text });
+
+        const tId = 'ti-' + Date.now();
+        mCont.innerHTML += `<div class="cb-msg cb-received" id="${tId}"><div class="cb-avatar"><img src="assets/logo.png"></div><div class="bot-typing"><span></span><span></span><span></span></div></div>`;
+        setTimeout(() => mCont.scrollTo({ top: mCont.scrollHeight, behavior: 'smooth' }), 50);
+
+        try {
+            const res = await fetch(API_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    messages: chatHist,
+                    model: "openai"
+                })
+            });
+
+            if (!res.ok) {
+                const errText = await res.text();
+                throw new Error(errText || "API Provider rejected the request.");
+            }
+
+            let rTx = await res.text();
+
+            if (!rTx || rTx.trim() === "") throw new Error("Recieved empty response from API.");
+
+            document.getElementById(tId).remove();
+            chatHist.push({ "role": "assistant", "content": rTx });
+            rTx = rTx.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+            mCont.innerHTML += `<div class="cb-msg cb-received" style="transform:scale(1)!important; opacity:1!important;"><div class="cb-avatar"><img src="assets/logo.png" style="width:16px;"></div><div class="cb-msg-bubble">${rTx}</div></div>`;
+            R();
+        } catch (e) {
+            document.getElementById(tId)?.remove();
+            let errMsg = "API Request failed: " + e.message.substring(0, 80);
+            mCont.innerHTML += `<div class="cb-msg cb-received" style="transform:scale(1)!important; opacity:1!important;"><div class="cb-avatar" style="background:#ef4444;"><i data-lucide="alert-triangle" style="color:white;width:16px;"></i></div><div class="cb-msg-bubble" style="color:#ef4444; border-color:#ef4444; background: rgba(239, 68, 68, 0.1);">${errMsg}</div></div>`;
+            if (window.lucide) lucide.createIcons();
+        }
+        setTimeout(() => mCont.scrollTo({ top: mCont.scrollHeight, behavior: 'smooth' }), 50);
+    }
+
+    cSend.addEventListener('click', pushMsg);
+    cInput.addEventListener('keypress', e => e.key === 'Enter' && pushMsg());
+});
