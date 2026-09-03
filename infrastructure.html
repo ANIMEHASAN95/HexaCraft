@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO -->
+    <title>DDoS Protection, Bare Metal & Network Infrastructure | HexaCraft</title>
+    <meta name="description" content="Explore HexaCraft's enterprise infrastructure: 17Tbps DDoS protection, bare metal servers, BGP tunnels, and S3 storage across global data centers.">
+    <meta name="keywords" content="ddos protection india, bare metal server india, bgp tunnel, s3 storage, enterprise infrastructure">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hexacraft.fun/infrastructure.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Enterprise Infrastructure - DDoS & Bare Metal | HexaCraft">
+    <meta property="og:description" content="17Tbps DDoS protection, bare metal servers, and global network infrastructure.">
+    <meta property="og:url" content="https://hexacraft.fun/infrastructure.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://hexacraft.fun/assets/og-infrastructure.png">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Enterprise Infrastructure | HexaCraft">
+    
+    <!-- Geo -->
+    <meta name="geo.region" content="IN">
+    
+    <!-- Assets -->
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "HexaCraft Infrastructure",
+      "description": "Enterprise infrastructure with DDoS protection and bare metal servers",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hexacraft.fun/" },
+          { "@type": "ListItem", "position": 2, "name": "Infrastructure", "item": "https://hexacraft.fun/infrastructure.html" }
+        ]
+      }
+    }
+    </script>
+</head>
+
+<body class="bg-[#080E1A] text-white">
+    <!-- NAVBAR (Update to match site) -->
+    <header id="navbar" class="navbar">
+        <div class="nav-island">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/logo.png" alt="HexaCraft" style="height: 36px;">
+                <span class="logo-w hex-text-gradient" style="font-size: 20px; font-weight: 800;">HexaCraft</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" class="npill-link"><i data-lucide="home" width="14" height="14"></i> Home</a>
+                <a href="vps.html" class="npill-link"><i data-lucide="server" width="14" height="14"></i> VPS</a>
+                <a href="minecraft.html" class="npill-link"><i data-lucide="gamepad-2" width="14" height="14"></i>
+                    Minecraft</a>
+                <div class="nav-drop">
+                    <button class="npill-link active">
+                        <i data-lucide="building-2" width="14" height="14"></i> Infrastructure
+                        <i data-lucide="chevron-down" width="13" height="13" class="ndrop-arrow"></i>
+                    </button>
+                    <div class="ndrop-menu">
+                        <a href="#ddos"><i data-lucide="shield" width="15" height="15"></i> DDoS Protection</a>
+                        <a href="#tunnels"><i data-lucide="route" width="15" height="15"></i> Tunnel IPs</a>
+                        <a href="#vds"><i data-lucide="cpu" width="15" height="15"></i> VDS Servers</a>
+                        <a href="#baremetal"><i data-lucide="hard-drive" width="15" height="15"></i> Bare Metal</a>
+                        <a href="#s3"><i data-lucide="database" width="15" height="15"></i> S3 Storage</a>
+                    </div>
+                </div>
+                <div class="nav-drop">
+                    <button class="npill-link">
+                        <i data-lucide="book-open" width="14" height="14"></i> Resources
+                        <i data-lucide="chevron-down" width="13" height="13" class="ndrop-arrow"></i>
+                    </button>
+                    <div class="ndrop-menu">
+                        <a href="support.html"><i data-lucide="help-circle" width="15" height="15"></i> Support
+                            Center</a>
+                        <a href="legal.html"><i data-lucide="file-text" width="15" height="15"></i> Legal Policies</a>
+                        <a href="knowledgebase.html"><i data-lucide="lightbulb" width="15" height="15"></i> Knowledge
+                            Base</a>
+                    </div>
+                </div>
+                <a href="https://panel.hexacraft.fun/" class="npill-link mobile-only-link">
+                    <i data-lucide="terminal" width="14" height="14"></i> Game Panel
+                </a>
+                <a href="javascript:void(0)" class="npill-link billing-btn mobile-only-link">
+                    <i data-lucide="credit-card" width="14" height="14"></i> Billing Panel
+                </a>
+                <a href="javascript:void(0)" class="npill-link nav-client-btn mobile-only-link">
+                    <i data-lucide="user" width="14" height="14"></i> Client Area
+                </a>
+            </nav>
+            <div class="nav-actions">
+                <a href="https://panel.hexacraft.fun/" class="nav-client-btn"><i data-lucide="layout-grid" width="14"
+                        height="14"></i> Panel</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-32">
+        <!-- HERO SECTION -->
+        <section class="min-h-[80vh] flex flex-col items-center justify-center relative overflow-hidden px-4">
+            <div class="absolute inset-0 hero-glow"></div>
+            <div class="container mx-auto text-center relative z-10">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-sm font-bold mb-8 animate-bounce">
+                    <i data-lucide="zap" width="16" height="16"></i> ENTERPRISE GRADE
+                </div>
+                <h1 class="text-7xl md:text-9xl font-black mb-8 leading-none tracking-tight">THE CORE OF<br><span
+                        class="hex-text-gradient">HEXACRAFT</span></h1>
+                <p class="text-gray-400 text-xl md:text-3xl max-w-4xl mx-auto leading-relaxed">
+                    Explore the massive interactive architecture powering 17,000+ servers worldwide.
+                    From 17Tbps cleaning to Bare Metal raw power.
+                </p>
+                <div class="mt-16 flex gap-6 justify-center">
+                    <a href="#ddos"
+                        class="px-12 py-6 bg-blue-600 rounded-2xl font-black text-xl hover:bg-blue-500 transition-all shadow-[0_0_50px_rgba(37,99,235,0.4)]">EXPLORE
+                        TECH</a>
+                    <a href="https://discord.com/invite/hexacraft"
+                        class="px-12 py-6 bg-white/5 border border-white/10 rounded-2xl font-black text-xl hover:bg-white/10 transition-all">SYSTEM
+                        STATUS</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- DDOS SECTION (CONDENSED) -->
+        <section id="ddos" class="min-h-[90vh] py-24 border-t border-white/5 relative bg-[#080E1A]">
+            <div class="container mx-auto px-4">
+                <div class="reveal mb-20">
+                    <h2 class="text-6xl md:text-[100px] font-black opacity-10 absolute -top-10 left-0 select-none">
+                        MITIGATION</h2>
+                    <div class="flex flex-col lg:flex-row items-center gap-16">
+                        <div class="lg:w-1/2 space-y-8">
+                            <h3 class="text-5xl md:text-6xl font-black leading-tight">17Tbps <span
+                                    class="text-sky-400">VAC</span><br>Cleaning Network</h3>
+                            <p class="text-gray-400 text-lg md:text-xl leading-relaxed">
+                                Our multi-layered DDoS mitigation system, powered by OVH VAC, analyzes and filters
+                                traffic in less than 1ms.
+                                We don't just block attacks; we shred them at the edge.
+                            </p>
+
+                            <!-- Protocol Hardening (New) -->
+                            <div class="glass-card p-10 rounded-[2.5rem] border-sky-500/20">
+                                <h4 class="text-xl font-bold mb-6 flex items-center gap-3">
+                                    <i data-lucide="shield-check" class="text-sky-400"></i> Protocol Hardening
+                                </h4>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <label class="flex items-center gap-3 cursor-pointer group">
+                                        <input type="checkbox" checked class="w-5 h-5 accent-sky-500">
+                                        <span class="text-gray-400 group-hover:text-white transition-colors">XDP/eBPF
+                                            Hardening</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 cursor-pointer group">
+                                        <input type="checkbox" checked class="w-5 h-5 accent-sky-500">
+                                        <span class="text-gray-400 group-hover:text-white transition-colors">7-Layer
+                                            Filter</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 cursor-pointer group">
+                                        <input type="checkbox" checked class="w-5 h-5 accent-sky-500">
+                                        <span class="text-gray-400 group-hover:text-white transition-colors">Game Query
+                                            Auth</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 cursor-pointer group">
+                                        <input type="checkbox" checked class="w-5 h-5 accent-sky-500">
+                                        <span class="text-gray-400 group-hover:text-white transition-colors">Anycast
+                                            Shield</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-8">
+                                <div class="glass-card p-8 rounded-3xl">
+                                    <div class="text-sky-400 font-black text-4xl mb-2">0.5ms</div>
+                                    <div class="text-gray-500 text-sm uppercase tracking-widest font-bold">Detection
+                                        Speed</div>
+                                </div>
+                                <div class="glass-card p-8 rounded-3xl">
+                                    <div class="text-sky-400 font-black text-4xl mb-2">17.2 Tbps</div>
+                                    <div class="text-gray-500 text-sm uppercase tracking-widest font-bold">Edge Capacity
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lg:w-1/2 relative">
+                            <!-- Tactical Mitigation Video/Image -->
+                            <div
+                                class="relative group overflow-hidden rounded-[3rem] border border-white/10 shadow-2xl bg-black">
+                                <video autoplay loop muted playsinline
+                                    class="w-full h-[500px] object-cover opacity-60 group-hover:scale-105 transition-transform duration-700">
+                                    <source
+                                        src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-circuit-board-14052-large.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent">
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                    <div class="w-64 h-64 border-2 border-sky-500/20 rounded-full animate-ping"></div>
+                                </div>
+                                <div class="absolute bottom-8 left-8">
+                                    <div class="flex items-center gap-3 text-sky-400 font-bold mb-2">
+                                        <span class="w-2 h-2 bg-sky-400 rounded-full animate-pulse"></span>
+                                        MITIGATION_CORE_01
+                                    </div>
+                                    <p class="text-white/60 text-sm font-mono uppercase">17.2 TBPS SCRUBBING CAPACITY
+                                        ACTIVE</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal grid grid-cols-1 md:grid-cols-3 gap-10">
+                    <div class="glass-card p-12 rounded-[3rem] hover:bg-white/5 transition-all group">
+                        <i data-lucide="globe"
+                            class="w-12 h-12 text-sky-400 mb-8 group-hover:scale-110 transition-transform"></i>
+                        <h4 class="text-3xl font-black mb-4">Anycast Routing</h4>
+                        <p class="text-gray-400 leading-relaxed text-lg">Your traffic is automatically routed to the
+                            nearest scrubbing center, ensuring 100% protection with zero latency increase.</p>
+                    </div>
+                    <div class="glass-card p-12 rounded-[3rem] hover:bg-white/5 transition-all group">
+                        <i data-lucide="layers"
+                            class="w-12 h-12 text-sky-400 mb-8 group-hover:scale-110 transition-transform"></i>
+                        <h4 class="text-3xl font-black mb-4">Layer 3/4/7</h4>
+                        <p class="text-gray-400 leading-relaxed text-lg">From simple raw packet floods to complex
+                            application-layer botnet attacks, our filters adapt in real-time to any threat.</p>
+                    </div>
+                    <div class="glass-card p-12 rounded-[3rem] hover:bg-white/5 transition-all group">
+                        <i data-lucide="shield-check"
+                            class="w-12 h-12 text-sky-400 mb-8 group-hover:scale-110 transition-transform"></i>
+                        <h4 class="text-3xl font-black mb-4">Game Specific</h4>
+                        <p class="text-gray-400 leading-relaxed text-lg">Optimized filters for Minecraft (Java/Bedrock),
+                            Zero-day exploit protection included.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WAF RULE STUDIO (CONDENSED) -->
+        <section id="waf" class="py-24 border-t border-white/5 relative overflow-hidden bg-[#050B1A]">
+            <div class="container mx-auto px-4">
+                <div class="reveal grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 lg:order-1">
+                        <!-- Simplified Rule UI -->
+                        <div class="glass-card p-8 rounded-3xl border-white/10 bg-black/40">
+                            <div class="flex items-center justify-between mb-8">
+                                <h4 class="text-lg font-black uppercase tracking-widest">WAF <span
+                                        class="text-sky-500">POLICY</span></h4>
+                                <div class="flex gap-1.5">
+                                    <span class="w-2.5 h-2.5 bg-red-500 rounded-full"></span>
+                                    <span class="w-2.5 h-2.5 bg-yellow-500 rounded-full"></span>
+                                    <span class="w-2.5 h-2.5 bg-green-500 rounded-full"></span>
+                                </div>
+                            </div>
+                            <div class="space-y-3 mb-8">
+                                <div
+                                    class="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/5 hover:border-sky-500/50 transition-all">
+                                    <div
+                                        class="w-10 h-10 bg-sky-500/10 rounded-lg flex items-center justify-center text-sky-500">
+                                        <i data-lucide="filter" class="w-5 h-5"></i>
+                                    </div>
+                                    <div class="flex-grow text-xs">
+                                        <div class="font-black text-gray-400 uppercase">Rate Limiting</div>
+                                        <div class="text-white">500 req/s threshold active</div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/5 hover:border-sky-500/50 transition-all">
+                                    <div
+                                        class="w-10 h-10 bg-sky-500/10 rounded-lg flex items-center justify-center text-sky-500">
+                                        <i data-lucide="shield" class="w-5 h-5"></i>
+                                    </div>
+                                    <div class="flex-grow text-xs">
+                                        <div class="font-black text-gray-400 uppercase">Bot Mitigation</div>
+                                        <div class="text-white">JS/Captcha Challenge enabled</div>
+                                    </div>
+                                </div>
+                                <button
+                                    class="w-full py-3 border-2 border-dashed border-white/10 rounded-xl text-gray-500 hover:text-white hover:border-sky-500/30 transition-all text-[10px] font-black uppercase">Attach
+                                    New Layer</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-1 lg:order-2">
+                        <h3 class="text-5xl font-black mb-6">WAF <span class="text-sky-500">STUDIO.</span></h3>
+                        <p class="text-gray-400 text-lg leading-relaxed mb-10">
+                            Apply precision security at the edge. Fine-tune your protection with granular L7 rules.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="p-5 bg-white/5 rounded-2xl border border-white/5">
+                                <div class="text-sky-400 font-black text-2xl">0.0ms</div>
+                                <div class="text-[9px] text-gray-500 uppercase font-black">Latency</div>
+                            </div>
+                            <div class="p-5 bg-white/5 rounded-2xl border border-white/5">
+                                <div class="text-sky-400 font-black text-2xl">100M+</div>
+                                <div class="text-[9px] text-gray-500 uppercase font-black">Capacity</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TUNNELS SECTION -->
+        <section id="tunnels"
+            class="min-h-[120vh] py-32 bg-gradient-to-b from-transparent via-blue-900/5 to-transparent relative">
+            <!-- GLOBAL NETWORK & TUNNELS (CONDENSED) -->
+            <section id="tunnels" class="py-24 border-t border-white/5 relative bg-[#010409] overflow-hidden">
+                <div class="absolute inset-0 opacity-20 pointer-events-none">
+                    <img src="assets/network.png" alt="Network Grid" class="w-full h-full object-cover">
+                </div>
+
+                <div class="container mx-auto px-4 relative z-10">
+                    <div class="reveal text-center mb-16">
+                        <h2 class="text-6xl md:text-8xl font-black mb-6 italic">NETWORK <span
+                                class="text-orange-500">FABRIC</span></h2>
+                        <p class="text-gray-400 text-xl max-w-3xl mx-auto leading-relaxed mb-8">
+                            Deploy secure, low-latency BGP Anycast IPv4/IPv6 tunnels in minutes. We utilize a private
+                            backbone consisting of
+                            <span class="text-white font-bold">Tier-1 carriers (NTT, Arelion, Lumen)</span> for
+                            zero-contingency routing.
+                        </p>
+                        <div
+                            class="flex flex-wrap justify-center gap-4 text-[10px] font-black tracking-widest text-orange-500/80">
+                            <span class="px-4 py-2 bg-orange-500/10 border border-orange-500/20 rounded-full">BGP
+                                ANYCAST</span>
+                            <span class="px-4 py-2 bg-orange-500/10 border border-orange-500/20 rounded-full">GRE / IPIP
+                                / SIT</span>
+                            <span class="px-4 py-2 bg-orange-500/10 border border-orange-500/20 rounded-full">PRIVATE
+                                BACKBONE</span>
+                        </div>
+                    </div>
+
+                    <div class="reveal grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+                        <!-- Compact Config Generator -->
+                        <div class="glass-card p-10 rounded-[2.5rem] bg-black/60 border-white/10">
+                            <div class="flex items-center justify-between mb-8">
+                                <h4 class="text-2xl font-black flex items-center gap-4">
+                                    <i data-lucide="terminal" class="text-orange-500"></i> Tunnel Config
+                                </h4>
+                                <select id="os-selector" onchange="updateTunnelConfig()"
+                                    class="bg-white/5 border border-white/10 text-white text-xs rounded-lg p-2 outline-none">
+                                    <option value="linux">Linux (Ubuntu/Debian)</option>
+                                    <option value="windows">Windows Server</option>
+                                    <option value="mikrotik">MikroTik RouterOS</option>
+                                </select>
+                            </div>
+                            <div
+                                class="bg-black/80 rounded-2xl p-6 font-mono text-[11px] h-[150px] overflow-y-auto mb-6 text-gray-400 custom-scrollbar">
+                                <div id="config-display" class="space-y-1">
+                                    <span class="text-gray-600"># Linux GRE Tunnel Setup</span>
+                                    <br>ip tunnel add hexa0 mode gre remote 103.111.xxx.xxx local &lt;your_ip&gt;
+                                    <br>ip link set hexa0 up
+                                    <br>ip addr add 10.0.0.2/30 dev hexa0
+                                </div>
+                            </div>
+                            <button
+                                class="w-full py-4 bg-orange-600 rounded-2xl font-black hover:bg-orange-500 transition-all text-sm">GENERATE
+                                SCRIPT</button>
+                        </div>
+
+                        <!-- Network Stats & Latency -->
+                        <div class="space-y-6">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div
+                                    class="p-6 bg-white/5 border border-white/5 rounded-3xl relative overflow-hidden group">
+                                    <video autoplay loop muted playsinline
+                                        class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-opacity">
+                                        <source
+                                            src="https://assets.mixkit.co/videos/preview/mixkit-circuit-board-digital-animation-14051-large.mp4"
+                                            type="video/mp4">
+                                    </video>
+                                    <div class="relative z-10">
+                                        <div class="text-[10px] text-gray-500 font-black uppercase mb-1">Peering</div>
+                                        <div class="text-2xl font-black text-white">500+ PNIs</div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="p-6 bg-white/5 border border-white/5 rounded-3xl relative overflow-hidden group">
+                                    <div class="absolute inset-0 bg-orange-500/5 animate-pulse"></div>
+                                    <div class="relative z-10">
+                                        <div class="text-[10px] text-gray-500 font-black uppercase mb-1">Backbone</div>
+                                        <div class="text-2xl font-black text-orange-500">100G NICS</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-8 bg-orange-600/5 border border-orange-500/20 rounded-3xl backdrop-blur-sm">
+                                <h5 class="text-sm font-black uppercase mb-4 tracking-widest text-orange-500">Real-Time
+                                    Global Latency</h5>
+                                <div class="grid grid-cols-2 gap-x-12 gap-y-4">
+                                    <div class="flex justify-between items-center text-xs">
+                                        <span class="text-gray-400">Mumbai DC</span>
+                                        <span class="text-green-400 font-mono font-bold">~1.2ms</span>
+                                    </div>
+                                    <div class="flex justify-between items-center text-xs">
+                                        <span class="text-gray-400">London Edge</span>
+                                        <span class="text-green-400 font-mono font-bold">~14ms</span>
+                                    </div>
+                                    <div class="flex justify-between items-center text-xs">
+                                        <span class="text-gray-400">Singapore</span>
+                                        <span class="text-green-400 font-mono font-bold">~28ms</span>
+                                    </div>
+                                    <div class="flex justify-between items-center text-xs">
+                                        <span class="text-gray-400">New York</span>
+                                        <span class="text-green-400 font-mono font-bold">~82ms</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                @keyframes movePacket {
+                    0% {
+                        offset-distance: 0%;
+                        opacity: 0;
+                    }
+
+                    10% {
+                        opacity: 1;
+                    }
+
+                    90% {
+                        opacity: 1;
+                    }
+
+                    100% {
+                        offset-distance: 100%;
+                        opacity: 0;
+                    }
+                }
+
+                #packet-trace {
+                    offset-path: path('M0,0 L0,150 L-250,350 L-250,550 L0,750 L250,550 L250,350 L0,150');
+                    animation: movePacket 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+                }
+            </style>
+
+            <!-- VDS SECTION -->
+            <section id="vds" class="py-32 border-t border-white/5 relative">
+                <div class="container mx-auto px-4">
+                    <div class="reveal grid grid-cols-1 lg:grid-cols-2 gap-20 items-center min-h-[80vh]">
+                        <div class="space-y-10">
+                            <h3 class="text-7xl font-black">Virtual <span class="text-purple-500">Dedicated</span>.</h3>
+                            <p class="text-gray-400 text-2xl leading-relaxed">
+                                A VDS is not a VPS. You get the full power of dedicated CPU cores, isolated RAM, and
+                                ultra-fast NVMe storage.
+                                Zero noisy neighbors. Zero contention.
+                            </p>
+                            <div class="space-y-6">
+                                <div class="flex items-center gap-6 group">
+                                    <div
+                                        class="w-16 h-16 glass-card rounded-2xl flex items-center justify-center text-purple-400 group-hover:bg-purple-600 transition-all">
+                                        <i data-lucide="cpu"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="text-xl font-bold">Dedicated Core Pins</h5>
+                                        <p class="text-gray-500">Real cores pinned to your instance, no stealing.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-6 group">
+                                    <div
+                                        class="w-16 h-16 glass-card rounded-2xl flex items-center justify-center text-purple-400 group-hover:bg-purple-600 transition-all">
+                                        <i data-lucide="hard-drive"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="text-xl font-bold">Local RAID 10 NVMe</h5>
+                                        <p class="text-gray-500">Enterprise storage speeds up to 5,000MB/s.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <!-- Realistic VDS Environment -->
+                            <div
+                                class="relative group overflow-hidden rounded-[3rem] border border-white/10 shadow-3xl bg-black">
+                                <img src="assets/server_rack.png" alt="VDS Infrastructure"
+                                    class="w-full h-[500px] object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-[#0D1117] via-transparent to-transparent">
+                                </div>
+
+                                <!-- Overlaid Telemetry Interface (Minimalist) -->
+                                <div class="absolute bottom-10 left-10 right-10 space-y-6">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-4">
+                                            <div
+                                                class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center text-purple-400">
+                                                <i data-lucide="cpu" class="w-6 h-6"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-white font-black text-xl">VDS-HYPER-CLUSTER</h4>
+                                                <div
+                                                    class="flex items-center gap-2 text-[10px] text-gray-400 font-mono">
+                                                    <span class="w-2 h-2 bg-green-500 rounded-full"></span> 100%
+                                                    ISOLATED
+                                                    RESOURCES
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="px-4 py-2 bg-green-500/10 text-green-400 border border-green-500/20 rounded-xl text-xs font-black uppercase">
+                                            Active
+                                        </div>
+                                    </div>
+                                    <div class="p-6 bg-black/40 backdrop-blur-md rounded-2xl border border-white/5">
+                                        <div
+                                            class="flex justify-between items-center mb-4 text-[10px] font-black text-gray-500 uppercase tracking-widest">
+                                            Node Telemetry
+                                        </div>
+                                        <canvas id="vds-chart" width="400" height="100"
+                                            class="w-full h-[100px]"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BARE METAL FLEET (CONDENSED) -->
+            <section id="baremetal" class="py-24 border-t border-white/5 relative bg-[#050B1A]">
+                <div class="container mx-auto px-4 text-center">
+                    <div class="reveal max-w-4xl mx-auto mb-20">
+                        <h2 class="text-6xl md:text-8xl font-black mb-8 italic">THE <span
+                                class="text-red-500">FLEET</span>
+                        </h2>
+                        <p class="text-gray-400 text-xl leading-relaxed">
+                            Raw, physical machines. No virtualization. Just pure unfiltered server performance deployed
+                            in
+                            under 20 minutes.
+                        </p>
+                    </div>
+
+                    <div class="reveal grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-24">
+                        <!-- Blinking Server Spotlight -->
+                        <div
+                            class="relative group rounded-[3.5rem] overflow-hidden border border-white/10 shadow-2xl bg-black aspect-video">
+                            <img src="assets/blinking_server.gif" alt="Dedicated Server Status"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[20s] linear">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                            <div class="absolute bottom-10 left-10 flex gap-6">
+                                <div class="bg-black/40 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/10">
+                                    <div class="text-[10px] text-gray-500 font-black uppercase mb-1">Status</div>
+                                    <div class="text-green-400 font-bold flex items-center gap-2">
+                                        <span class="w-2 h-2 bg-green-400 rounded-full"></span> 24/7 ONLINE
+                                    </div>
+                                </div>
+                                <div class="bg-black/40 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/10">
+                                    <div class="text-[10px] text-gray-500 font-black uppercase mb-1">Load</div>
+                                    <div class="text-white font-bold">1.4% (IDLE)</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6 text-left">
+                            <h4 class="text-4xl font-black">Industrial Grade <span class="text-red-500">Silicon</span>.
+                            </h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div
+                                    class="p-8 bg-white/5 rounded-3xl border border-white/5 hover:bg-white/10 transition-all">
+                                    <h5 class="text-red-500 font-black text-xl mb-2">EPYC™ 9654</h5>
+                                    <p class="text-xs text-gray-500">96 Cores of raw Zen 4 power for massive industrial
+                                        workloads.</p>
+                                </div>
+                                <div
+                                    class="p-8 bg-white/5 rounded-3xl border border-white/5 hover:bg-white/10 transition-all">
+                                    <h5 class="text-blue-500 font-black text-xl mb-2">GOLD 6230R</h5>
+                                    <p class="text-xs text-gray-500">Enterprise stability for mission-critical
+                                        applications.
+                                    </p>
+                                </div>
+                                <div
+                                    class="p-8 bg-white/5 rounded-3xl border border-white/5 hover:bg-white/10 transition-all">
+                                    <h5 class="text-green-500 font-black text-xl mb-2">RYZEN 7950X</h5>
+                                    <p class="text-xs text-gray-500">5.7GHz burst speeds for high-performance gaming.
+                                    </p>
+                                </div>
+                                <div
+                                    class="p-8 bg-white/5 rounded-3xl border border-white/5 hover:bg-white/10 transition-all flex items-center justify-center">
+                                    <button
+                                        class="px-8 py-4 bg-red-600 rounded-2xl font-black hover:bg-red-500 transition-all w-full">VIEW
+                                        FULL FLEET</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Benchmark Engine (New) -->
+                    <div class="reveal glass-card p-16 rounded-[4rem] border-white/5 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-10 opacity-5">
+                            <i data-lucide="activity" class="w-60 h-60"></i>
+                        </div>
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+                            <div class="text-left">
+                                <h4 class="text-3xl font-black mb-6">Performance Benchmark <span
+                                        class="text-red-500">Engine</span></h4>
+                                <p class="text-gray-500 text-lg mb-12">The proof is in the silicon. See how our bare
+                                    metal
+                                    fleet outperforms standard cloud instances in real-world compute tasks.</p>
+                                <div class="space-y-8">
+                                    <div>
+                                        <div
+                                            class="flex justify-between text-[10px] font-black text-gray-400 mb-4 tracking-widest">
+                                            <span id="benchmark-label">HEXACRAFT EPYC™ 9654</span>
+                                            <span id="benchmark-val" class="text-white">124,500 PTS</span>
+                                        </div>
+                                        <div class="w-full h-3 bg-white/5 rounded-full overflow-hidden">
+                                            <div id="benchmark-bar-1"
+                                                class="h-full bg-gradient-to-r from-red-600 to-orange-500 w-[95%] transition-all duration-1000">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="opacity-30">
+                                        <div
+                                            class="flex justify-between text-[10px] font-black text-gray-500 mb-4 tracking-widest">
+                                            <span>STANDARD CLOUD XEON (2VCPU)</span>
+                                            <span>12,800 PTS</span>
+                                        </div>
+                                        <div class="w-full h-3 bg-white/5 rounded-full overflow-hidden">
+                                            <div class="h-full bg-gray-500 w-[15%]"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="bg-black/40 rounded-[3rem] p-10 border border-white/5 flex flex-col justify-center text-left">
+                                <h5 class="text-xl font-bold mb-8">Hardware Configurator</h5>
+                                <div class="space-y-10">
+                                    <div>
+                                        <div
+                                            class="flex justify-between text-[10px] font-black text-gray-500 mb-4 uppercase tracking-widest">
+                                            RAM CAPACITY: <span id="build-ram-val" class="text-white">128GB</span></div>
+                                        <input type="range" id="build-ram-input" min="1" max="5" value="2"
+                                            class="w-full h-2 bg-white/5 rounded-full appearance-none cursor-pointer accent-red-500"
+                                            oninput="updateBuildConfig()">
+                                    </div>
+                                    <div>
+                                        <div
+                                            class="flex justify-between text-[10px] font-black text-gray-500 mb-4 uppercase tracking-widest">
+                                            STORAGE: <span id="build-disk-val" class="text-white">2TB NVMe</span></div>
+                                        <input type="range" id="build-disk-input" min="1" max="4" value="1"
+                                            class="w-full h-2 bg-white/5 rounded-full appearance-none cursor-pointer accent-blue-500"
+                                            oninput="updateBuildConfig()">
+                                    </div>
+                                    <div class="pt-10 border-t border-white/5 flex justify-between items-center">
+                                        <div class="flex flex-col">
+                                            <span class="text-[10px] text-gray-500 font-black uppercase">Setup
+                                                Time</span>
+                                            <span class="text-xl font-black text-green-400">INSTANT</span>
+                                        </div>
+                                        <div class="flex flex-col items-end">
+                                            <span class="text-[10px] text-gray-500 font-black uppercase">Network</span>
+                                            <span class="text-xl font-black text-sky-400">25Gbps</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- S3 STORAGE -->
+            <!-- HARDWARE DEEP DIVE (NEW L3) -->
+            <section id="deepdive" class="py-32 border-t border-white/5 relative bg-[#010409] overflow-hidden">
+                <div class="container mx-auto px-4">
+                    <div class="reveal text-center mb-32">
+                        <h2 class="text-7xl font-black mb-8 italic">CORE <span class="text-red-500">SYSTEMS</span></h2>
+                        <p class="text-gray-500 text-2xl max-w-4xl mx-auto font-light">Peel back the layers of our
+                            enterprise chassis. Every component is hand-selected for 24/7 industrial reliability.</p>
+                    </div>
+
+                    <div class="reveal flex flex-col lg:flex-row items-center justify-between gap-20">
+                        <div class="lg:w-1/2 relative h-[600px] w-full group">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div
+                                    class="absolute w-64 h-32 glass-card rounded-xl border-white/10 -translate-y-48 translate-x-20 opacity-40 group-hover:translate-y-[-250px] transition-all duration-700 flex flex-col items-center justify-center cursor-help">
+                                    <i data-lucide="zap" class="text-red-500 mb-2"></i>
+                                    <span class="text-[8px] font-black uppercase">Dual 1600W Platinum PSU</span>
+                                </div>
+                                <div
+                                    class="absolute w-[400px] h-[300px] bg-red-500/5 border-2 border-red-500/20 rounded-3xl group-hover:scale-110 transition-all duration-700 flex items-center justify-center overflow-hidden">
+                                    <div class="grid grid-cols-4 gap-4 opacity-10">
+                                        <div class="w-16 h-16 bg-white rounded-lg"></div>
+                                        <div class="w-16 h-16 bg-white rounded-lg"></div>
+                                        <div class="w-16 h-16 bg-white rounded-lg"></div>
+                                        <div class="w-16 h-16 bg-white rounded-lg"></div>
+                                    </div>
+                                </div>
+                                <div class="absolute w-24 h-24 bg-red-600 rounded-xl flex items-center justify-center shadow-2xl group-hover:scale-125 transition-all duration-500 cursor-pointer"
+                                    onclick="showHWSpec('cpu')">
+                                    <i data-lucide="cpu" class="text-white w-10 h-10"></i>
+                                </div>
+                                <div class="absolute w-12 h-40 bg-blue-500/20 border border-blue-500/50 rounded-lg rotate-90 translate-x-40 group-hover:translate-x-64 transition-all duration-700 cursor-pointer"
+                                    onclick="showHWSpec('storage')">
+                                    <div class="h-full w-full flex items-center justify-center"><span
+                                            class="text-[6px] font-black text-blue-400 -rotate-90">GEN5 NVMe</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="hw-overlay"
+                                class="absolute bottom-0 left-0 right-0 glass-card p-8 rounded-3xl border-white/10 opacity-0 translate-y-10 transition-all duration-500 pointer-events-none bg-black/90">
+                                <div class="flex items-center gap-6">
+                                    <div id="hw-icon"
+                                        class="w-16 h-16 bg-red-500/10 rounded-2xl flex items-center justify-center text-red-500">
+                                    </div>
+                                    <div>
+                                        <h5 id="hw-title" class="text-xl font-black uppercase">COMPONENT</h5>
+                                        <p id="hw-desc" class="text-xs text-gray-500">Select a component to view
+                                            technical
+                                            metrics.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lg:w-1/2 space-y-8 text-left">
+                            <div class="p-8 glass-card border-white/5 rounded-3xl hover:bg-white/5 transition-all">
+                                <h4 class="text-2xl font-black mb-2 flex items-center gap-4"><i
+                                        data-lucide="thermometer" class="text-blue-400"></i> Liquid Cooling</h4>
+                                <p class="text-gray-400 text-sm font-light">Custom industrial loops ensure 0% thermal
+                                    throttling even under sustained 100% core loads.</p>
+                            </div>
+                            <div class="p-8 glass-card border-white/5 rounded-3xl hover:bg-white/5 transition-all">
+                                <h4 class="text-2xl font-black mb-2 flex items-center gap-4"><i
+                                        data-lucide="refresh-ccw" class="text-green-400"></i> Hot-Swap Fabric</h4>
+                                <p class="text-gray-400 text-sm font-light">Enterprise-grade drive bays and power
+                                    supplies
+                                    allowing for zero-downtime maintenance.</p>
+                            </div>
+                            <div class="p-8 glass-card border-white/5 rounded-3xl hover:bg-white/5 transition-all">
+                                <h4 class="text-2xl font-black mb-2 flex items-center gap-4"><i
+                                        data-lucide="shield-check" class="text-purple-400"></i> ECC Protection</h4>
+                                <p class="text-gray-400 text-sm font-light">Multi-bit error detection and recovery at
+                                    the
+                                    hardware level, preventing runtime corruption.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="s3" class="py-32 border-t border-white/5 relative min-h-[100vh] flex items-center">
+                <div class="container mx-auto px-4">
+                    <div class="reveal grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
+                        <div class="space-y-12">
+                            <h2 class="text-8xl font-black leading-none">OBJECT<br><span
+                                    class="text-orange-500">STORAGE.</span></h2>
+                            <p class="text-gray-400 text-2xl leading-relaxed">
+                                A highly available, S3-compatible storage cluster replicated across 3 geographical
+                                nodes.
+                                Perfect for game backups, world storage, and app assets.
+                            </p>
+                            <div class="glass-card p-12 rounded-[3rem] space-y-12">
+                                <div>
+                                    <div
+                                        class="flex justify-between text-white font-black mb-6 uppercase tracking-widest text-sm">
+                                        <span>CHOOSEN CAPACITY</span>
+                                        <span id="s3-cap-val" class="text-orange-500 text-2xl">5 TB</span>
+                                    </div>
+                                    <input type="range" id="s3-range" min="1" max="100" value="5"
+                                        class="w-full h-4 bg-white/5 rounded-full appearance-none cursor-pointer accent-orange-500"
+                                        oninput="updateS3Calculator(this.value)">
+                                </div>
+                                <div class="grid grid-cols-2 gap-8">
+                                    <div class="bg-black/40 p-8 rounded-3xl border border-white/5">
+                                        <div class="text-gray-500 text-[10px] font-black uppercase mb-2">Monthly Cost
+                                        </div>
+                                        <div id="s3-cost-val" class="text-4xl font-black text-white">₹4,000</div>
+                                    </div>
+                                    <div class="bg-black/40 p-8 rounded-3xl border border-white/5">
+                                        <div class="text-gray-500 text-[10px] font-black uppercase mb-2">Redundancy
+                                        </div>
+                                        <div class="text-4xl font-black text-green-400">3x Copy</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <!-- S3 Power Console -->
+                            <div
+                                class="glass-card p-10 rounded-[3rem] border-white/10 relative overflow-hidden group text-left">
+                                <div class="flex items-center justify-between mb-8">
+                                    <h4 class="text-xl font-black flex items-center gap-3">
+                                        <i data-lucide="database" class="text-orange-500"></i> Geo-Replication
+                                    </h4>
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                                        <span class="text-[10px] font-mono text-gray-500 uppercase tracking-widest">3x
+                                            SYNC</span>
+                                    </div>
+                                </div>
+
+                                <!-- Geo map with replication lines -->
+                                <div
+                                    class="relative h-[250px] bg-[url('assets/world-map-dots.png')] bg-center bg-no-repeat bg-contain opacity-40 mb-8 overflow-hidden rounded-2xl">
+                                    <canvas id="s3-map" width="500" height="250"
+                                        class="absolute inset-0 w-full h-full"></canvas>
+                                    <!-- Map markers (Blinks) -->
+                                    <div
+                                        class="absolute top-[40%] left-[20%] w-2 h-2 bg-orange-500 rounded-full animate-ping">
+                                    </div>
+                                    <div class="absolute top-[35%] left-[45%] w-2 h-2 bg-orange-500 rounded-full animate-ping"
+                                        style="animation-delay: 0.3s"></div>
+                                    <div class="absolute top-[60%] left-[75%] w-2 h-2 bg-orange-500 rounded-full animate-ping"
+                                        style="animation-delay: 0.6s"></div>
+                                </div>
+
+                                <!-- Object Lifecycle Simulator -->
+                                <div class="bg-black/40 rounded-3xl p-8 border border-white/5">
+                                    <div class="flex justify-between items-center mb-8">
+                                        <span
+                                            class="text-[10px] font-black text-gray-500 uppercase tracking-widest">Object
+                                            Lifecycle Stage</span>
+                                        <button onclick="startS3Demo()"
+                                            class="text-[10px] px-4 py-1.5 bg-orange-500/20 text-orange-400 rounded-full hover:bg-orange-500 hover:text-white transition-all font-black border border-orange-500/20">TEST
+                                            UPLOAD</button>
+                                    </div>
+                                    <div class="flex items-center justify-between relative">
+                                        <!-- Flow lines -->
+                                        <div class="absolute top-1/2 left-0 right-0 h-px bg-white/5 -translate-y-1/2">
+                                        </div>
+                                        <div id="s3-flow-1"
+                                            class="absolute top-1/2 left-0 h-1 bg-orange-500 -translate-y-1/2 w-0 transition-all duration-700">
+                                        </div>
+                                        <div id="s3-flow-2"
+                                            class="absolute top-1/2 left-1/3 h-1 bg-orange-500 -translate-y-1/2 w-0 transition-all duration-700">
+                                        </div>
+
+                                        <!-- Steps -->
+                                        <div class="flex flex-col items-center gap-3 relative z-10">
+                                            <div id="s3-step-1"
+                                                class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-gray-600 transition-all duration-500 border border-white/5">
+                                                <i data-lucide="upload-cloud" class="w-6 h-6"></i>
+                                            </div>
+                                            <span class="text-[9px] font-black text-gray-500 uppercase">Ingest</span>
+                                        </div>
+                                        <div class="flex flex-col items-center gap-3 relative z-10">
+                                            <div id="s3-step-2"
+                                                class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-gray-600 transition-all duration-500 border border-white/5">
+                                                <i data-lucide="refresh-cw" class="w-6 h-6"></i>
+                                            </div>
+                                            <span class="text-[9px] font-black text-gray-500 uppercase">Sync</span>
+                                        </div>
+                                        <div class="flex flex-col items-center gap-3 relative z-10">
+                                            <div id="s3-step-3"
+                                                class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-gray-600 transition-all duration-500 border border-white/5">
+                                                <i data-lucide="shield-check" class="w-6 h-6"></i>
+                                            </div>
+                                            <span class="text-[9px] font-black text-gray-500 uppercase">Commit</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- ENTERPRISE STATUS DASHBOARD (NEW L3) -->
+            <section id="status" class="py-32 border-t border-white/5 relative bg-[#050B1A]">
+                <div class="container mx-auto px-4">
+                    <div class="reveal flex flex-col lg:flex-row justify-between items-end mb-20 gap-10">
+                        <div class="text-left">
+                            <h2 class="text-6xl font-black mb-4 uppercase tracking-tighter">NETWORK <span
+                                    class="text-green-500">HEALTH</span></h2>
+                            <p class="text-gray-500 font-mono text-xs uppercase tracking-widest">Global Node Status |
+                                Real-time Heartbeat</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="px-6 py-3 glass-card rounded-2xl border-white/5 flex items-center gap-3">
+                                <span class="w-2 h-2 bg-green-500 rounded-full animate-ping"></span>
+                                <span class="text-[10px] font-black uppercase">All Systems Nominal</span>
+                            </div>
+                            <button onclick="pingAllNodes()"
+                                class="px-6 py-3 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition-all text-[10px] font-black uppercase">Force
+                                Global Ping</button>
+                        </div>
+                    </div>
+
+                    <div class="reveal grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 mb-20">
+                        <div
+                            class="glass-card p-4 rounded-2xl border-white/5 flex flex-col gap-3 group hover:border-green-500/30 transition-all">
+                            <div class="flex justify-between items-center"><span
+                                    class="text-[8px] font-mono text-gray-500">ID-001</span>
+                                <div id="node-dot-1" class="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                            </div>
+                            <div class="text-[10px] font-black text-white">MUMBAI_01</div>
+                            <div class="text-[8px] text-gray-600 font-mono">99.999%</div>
+                        </div>
+                        <div
+                            class="glass-card p-4 rounded-2xl border-white/5 flex flex-col gap-3 group hover:border-green-500/30 transition-all">
+                            <div class="flex justify-between items-center"><span
+                                    class="text-[8px] font-mono text-gray-500">ID-002</span>
+                                <div id="node-dot-2" class="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                            </div>
+                            <div class="text-[10px] font-black text-white">LONDON_01</div>
+                            <div class="text-[8px] text-gray-600 font-mono">99.999%</div>
+                        </div>
+                        <div
+                            class="glass-card p-4 rounded-2xl border-white/5 flex flex-col gap-3 group hover:border-green-500/30 transition-all">
+                            <div class="flex justify-between items-center"><span
+                                    class="text-[8px] font-mono text-gray-500">ID-003</span>
+                                <div id="node-dot-3" class="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                            </div>
+                            <div class="text-[10px] font-black text-white">NYC_01</div>
+                            <div class="text-[8px] text-gray-600 font-mono">99.999%</div>
+                        </div>
+                        <div
+                            class="glass-card p-4 rounded-2xl border-white/5 flex flex-col gap-3 group hover:border-green-500/30 transition-all">
+                            <div class="flex justify-between items-center"><span
+                                    class="text-[8px] font-mono text-gray-500">ID-004</span>
+                                <div id="node-dot-4" class="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                            </div>
+                            <div class="text-[10px] font-black text-white">SINGAPORE_01</div>
+                            <div class="text-[8px] text-gray-600 font-mono">99.999%</div>
+                        </div>
+                        <div
+                            class="glass-card p-4 rounded-2xl border-white/5 flex flex-col gap-3 group hover:border-green-500/30 transition-all">
+                            <div class="flex justify-between items-center"><span
+                                    class="text-[8px] font-mono text-gray-500">ID-005</span>
+                                <div id="node-dot-5" class="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                            </div>
+                            <div class="text-[10px] font-black text-white">FRANKFURT_01</div>
+                            <div class="text-[8px] text-gray-600 font-mono">99.999%</div>
+                        </div>
+                        <div
+                            class="glass-card p-4 rounded-2xl border-white/5 flex flex-col gap-3 group hover:border-green-500/30 transition-all">
+                            <div class="flex justify-between items-center"><span
+                                    class="text-[8px] font-mono text-gray-500">ID-006</span>
+                                <div id="node-dot-6" class="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                            </div>
+                            <div class="text-[10px] font-black text-white">TOKYO_01</div>
+                            <div class="text-[8px] text-gray-600 font-mono">99.999%</div>
+                        </div>
+                        <div
+                            class="glass-card p-4 rounded-2xl border-white/5 flex flex-col gap-3 group hover:border-green-500/30 transition-all">
+                            <div class="flex justify-between items-center"><span
+                                    class="text-[8px] font-mono text-gray-500">ID-007</span>
+                                <div id="node-dot-7" class="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                            </div>
+                            <div class="text-[10px] font-black text-white">PARIS_01</div>
+                            <div class="text-[8px] text-gray-600 font-mono">99.999%</div>
+                        </div>
+                        <div
+                            class="glass-card p-4 rounded-2xl border-white/5 flex flex-col gap-3 group hover:border-green-500/30 transition-all">
+                            <div class="flex justify-between items-center"><span
+                                    class="text-[8px] font-mono text-gray-500">ID-008</span>
+                                <div id="node-dot-8" class="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                            </div>
+                            <div class="text-[10px] font-black text-white">SYDNEY_01</div>
+                            <div class="text-[8px] text-gray-600 font-mono">99.999%</div>
+                        </div>
+                    </div>
+
+                    <div class="reveal grid grid-cols-1 md:grid-cols-3 gap-10">
+                        <div
+                            class="p-10 glass-card rounded-[3rem] border-white/5 text-left bg-gradient-to-br from-green-500/5 to-transparent">
+                            <div class="text-3xl font-black text-white mb-2">99.99%</div>
+                            <div class="text-[10px] text-gray-500 uppercase font-black mb-6">Uptime SLA</div>
+                            <p class="text-xs text-gray-500 leading-relaxed font-light">Financial-grade availability
+                                backed
+                                by our multi-homed Anycast reachability.</p>
+                        </div>
+                        <div
+                            class="p-10 glass-card rounded-[3rem] border-white/5 text-left bg-gradient-to-br from-blue-500/5 to-transparent">
+                            <div class="text-3xl font-black text-white mb-2">1,240</div>
+                            <div class="text-[10px] text-gray-500 uppercase font-black mb-6">Global Peers</div>
+                            <p class="text-xs text-gray-500 leading-relaxed font-light">Direct peering with major ISPs
+                                including Airtel, Reliance Jio, and AWS Global Accelerator.</p>
+                        </div>
+                        <div
+                            class="p-10 glass-card rounded-[3rem] border-white/5 text-left bg-gradient-to-br from-purple-500/5 to-transparent">
+                            <div class="text-3xl font-black text-white mb-2">&lt; 1ms</div>
+                            <div class="text-[10px] text-gray-500 uppercase font-black mb-6">Internal Jitter</div>
+                            <p class="text-xs text-gray-500 leading-relaxed font-light">Lowest possible internal
+                                switching
+                                latency achieved via 100G RoCEv2 fabrics.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="ft-bottom text-center py-20 border-t border-white/5">
+            <p class="ft-copy">© 2024 - 2026 HexaCraft. All rights reserved.<br>Made With ❤️ By VoidWalker - Founder
+                SysmoraLabs</p>
+        </div>
+    </footer>
+
+    <script>
+        // Reveal Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // DDoS Simulator & Heatmap Logic
+        function runAttack(type) {
+            const display = document.getElementById('sim-display');
+            display.innerHTML = `<p class="text-red-500 font-black animate-pulse uppercase tracking-tighter mb-4 text-xs">[!!!] CRITICAL: ${type} FLOOD DETECTED - 4.2 TBPS</p>`;
+            let count = 0;
+            const interval = setInterval(() => {
+                count++;
+                const log = document.createElement('p');
+                log.className = "text-[10px] " + (count % 4 === 0 ? "text-sky-400 font-bold" : "text-gray-500 font-mono");
+                log.innerHTML = `[${new Date().toLocaleTimeString()}] Filter node SG-01: Scrubbing pkt_${Math.random().toString(16).substr(2, 6)} ... <span class="text-green-500">CLEAN</span>`;
+                display.appendChild(log);
+                display.scrollTop = display.scrollHeight;
+                if (count > 20) {
+                    clearInterval(interval);
+                    const final = document.createElement('p');
+                    final.className = "text-sky-400 font-black mt-4 text-[10px] uppercase border-t border-white/5 pt-4";
+                    final.innerHTML = `[SUCCESS] ${type} Attack Neutralized. Filter rules updated.`;
+                    display.appendChild(final);
+                    display.scrollTop = display.scrollHeight;
+                }
+            }, 150);
+        }
+
+        // Tunnels: Regional Ping Tool
+        function testPing(loc, base) {
+            const el = document.getElementById(`ping-${loc}`);
+            el.innerText = 'Checking...';
+            el.className = 'text-sm font-bold text-orange-500 animate-pulse';
+            setTimeout(() => {
+                const varia = Math.floor(Math.random() * 5);
+                el.innerText = (base + varia) + ' ms';
+                el.className = 'text-xl font-black text-white group-hover:text-orange-500';
+            }, 800);
+        }
+
+        // Tunnels: Config Gen
+        function updateTunnelConfig() {
+            const os = document.getElementById('os-selector').value;
+            const display = document.getElementById('config-display');
+            let codes = {
+                linux: `<span class="text-gray-600"># Linux GRE Tunnel</span>\nip tunnel add hexa0 mode gre remote 103.111.xxx.xxx local &lt;your_ip&gt;\nip link set hexa0 up\nip addr add 10.0.0.2/30 dev hexa0`,
+                windows: `<span class="text-gray-600"># Windows GRE (PowerShell)</span>\nNew-NetIPInterface -InterfaceAlias "HexaTunnel"\nSet-NetIPAddress -InterfaceAlias "HexaTunnel" -IPAddress 10.0.0.2`,
+                mikrotik: `<span class="text-gray-600"># MikroTik RouterOS</span>\n/interface gre add name=hexa0 remote-address=103.111.xxx.xxx\n/ip address add address=10.0.0.2/30 interface=hexa0`
+            };
+            display.innerHTML = codes[os];
+        }
+
+        // VDS: Live Telemetry & Console
+        const vdsCtx = document.getElementById('vds-chart').getContext('2d');
+        let points = Array(20).fill(20);
+        function drawChart() {
+            vdsCtx.clearRect(0, 0, 400, 120);
+            vdsCtx.beginPath();
+            vdsCtx.strokeStyle = '#a855f7';
+            vdsCtx.lineWidth = 3;
+            vdsCtx.lineJoin = 'round';
+            const step = 400 / (points.length - 1);
+            points.forEach((p, i) => {
+                const x = i * step;
+                const y = 120 - (p / 100 * 120);
+                if (i === 0) vdsCtx.moveTo(x, y); else vdsCtx.lineTo(x, y);
+            });
+            vdsCtx.stroke();
+            vdsCtx.lineTo(400, 120);
+            vdsCtx.lineTo(0, 120);
+            vdsCtx.fillStyle = 'rgba(168, 85, 247, 0.1)';
+            vdsCtx.fill();
+            points.shift();
+            points.push(Math.max(10, Math.min(90, points[points.length - 1] + (Math.random() - 0.5) * 20)));
+        }
+        setInterval(drawChart, 200);
+
+        function handleShellCommand(e) {
+            if (e.key === 'Enter') {
+                const input = e.target;
+                const cmd = input.value.toLowerCase();
+                const output = document.getElementById('vds-shell-output');
+                const p = document.createElement('p');
+                p.innerHTML = `<span class="text-gray-500">root@hexacraft:~#</span> ${cmd}`;
+                output.appendChild(p);
+                const resp = document.createElement('p');
+                resp.className = 'text-green-400';
+                if (cmd === 'help') resp.innerText = 'Available: stats, reboot, clear, network';
+                else if (cmd === 'stats') resp.innerText = 'CPU: Ryzen 9 7950X | RAM: 32GB DDR5 | DISK: 2TB NVMe';
+                else if (cmd === 'network') resp.innerText = 'Eth0: 10Gbps Up | 10Gbps Down | Active';
+                else if (cmd === 'clear') { output.innerHTML = ''; input.value = ''; return; }
+                else resp.innerText = `Command '${cmd}' not found.`;
+                output.appendChild(resp);
+                output.scrollTop = output.scrollHeight;
+                input.value = '';
+            }
+        }
+
+        // Bare Metal Benchmarks
+        function compareCPU(tier) {
+            const bar = document.getElementById('benchmark-bar-1');
+            const label = document.getElementById('benchmark-label');
+            const val = document.getElementById('benchmark-val');
+            bar.style.width = '0%';
+            setTimeout(() => {
+                const tiers = {
+                    EPYC: ['HEXACRAFT EPYC™ 9654', '124,500 PTS', 'from-red-600 to-orange-500', '95%'],
+                    Xeon: ['HEXACRAFT GOLD 6230R', '82,100 PTS', 'from-blue-600 to-sky-500', '75%'],
+                    Ryzen: ['HEXACRAFT RYZEN 7950X', '94,300 PTS', 'from-green-600 to-emerald-500', '85%']
+                };
+                [label.innerText, val.innerText] = [tiers[tier][0], tiers[tier][1]];
+                bar.className = `h-full bg-gradient-to-r ${tiers[tier][2]} w-[${tiers[tier][3]}] transition-all duration-1000`;
+            }, 100);
+        }
+
+        function benchmarkSystem() {
+            const display = document.getElementById('vds-shell-output');
+            const p = document.createElement('p');
+            p.className = 'text-yellow-400 animate-pulse';
+            p.innerText = 'STRESS TEST INITIATED...';
+            display.appendChild(p);
+
+            // Trigger chart spike
+            points = points.map(p => Math.min(100, p + 40));
+
+            setTimeout(() => {
+                const done = document.createElement('p');
+                done.className = 'text-green-400';
+                done.innerText = 'System stable under 100% Load. Thermal levels nominal.';
+                display.appendChild(done);
+                display.scrollTop = display.scrollHeight;
+            }, 2000);
+        }
+
+        function controlVDS(action) {
+            const status = document.getElementById('vds-status');
+            const output = document.getElementById('vds-shell-output');
+            const p = document.createElement('p');
+            p.className = 'text-purple-400 font-bold';
+
+            if (action === 'restart') {
+                status.innerText = 'REBOOTING';
+                status.className = 'px-3 py-1 bg-yellow-500/10 text-yellow-500 border border-yellow-500/20 rounded-lg text-[10px] font-black uppercase tracking-wider';
+                p.innerText = '[SYSTEM] REBOOT SIGNAL SENT...';
+                setTimeout(() => {
+                    status.innerText = 'ONLINE';
+                    status.className = 'px-3 py-1 bg-green-500/10 text-green-400 border border-green-500/20 rounded-lg text-[10px] font-black uppercase tracking-wider';
+                }, 3000);
+            } else if (action === 'stop') {
+                status.innerText = 'KILLED';
+                status.className = 'px-3 py-1 bg-red-500/10 text-red-500 border border-red-500/20 rounded-lg text-[10px] font-black uppercase tracking-wider';
+                p.innerText = '[SYSTEM] PROCESS TERMINATED.';
+            }
+            output.appendChild(p);
+            output.scrollTop = output.scrollHeight;
+        }
+
+        function stressTest() {
+            benchmarkSystem();
+        }
+
+        function updateBuildConfig() {
+            const ramInput = document.getElementById('build-ram-input');
+            const diskInput = document.getElementById('build-disk-input');
+            if (!ramInput || !diskInput) return;
+
+            const ram = parseInt(ramInput.value);
+            const disk = parseInt(diskInput.value);
+            const ramMap = ['32GB', '64GB', '128GB', '256GB', '512GB'];
+            const diskMap = ['1TB', '2TB', '4TB', '8TB'];
+
+            document.getElementById('build-ram-val').innerText = ramMap[ram - 1] + ' ECC';
+            document.getElementById('build-disk-val').innerText = diskMap[disk - 1] + ' NVMe';
+        }
+
+        // S3 logic
+        function updateS3Calculator(val) {
+            document.getElementById('s3-cap-val').innerText = val + ' TB';
+            document.getElementById('s3-cost-val').innerText = '₹' + (val * 800).toLocaleString();
+        }
+
+        function startS3Demo() {
+            [1, 2, 3].forEach(s => {
+                document.getElementById(`s3-step-${s}`).className = 'w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-gray-600 transition-all border border-white/5';
+                if (s < 3) document.getElementById(`s3-flow-${s}`).style.width = '0%';
+            });
+            setTimeout(() => { document.getElementById('s3-step-1').className = 'w-14 h-14 bg-orange-600 rounded-2xl flex items-center justify-center text-white scale-110 shadow-lg'; document.getElementById('s3-flow-1').style.width = '33%'; }, 500);
+            setTimeout(() => { document.getElementById('s3-step-2').className = 'w-14 h-14 bg-orange-600 rounded-2xl flex items-center justify-center text-white scale-110 shadow-lg'; document.getElementById('s3-flow-2').style.width = '33%'; }, 1500);
+            setTimeout(() => { document.getElementById('s3-step-3').className = 'w-14 h-14 bg-green-600 rounded-2xl flex items-center justify-center text-white scale-110 shadow-lg'; }, 2500);
+        }
+
+        // S3 Map
+        const s3Map = document.getElementById('s3-map');
+        const s3Ctx = s3Map.getContext('2d');
+        let s3Pulse = 0;
+        function animateS3() {
+            s3Ctx.clearRect(0, 0, 500, 250);
+            s3Ctx.beginPath();
+            s3Ctx.setLineDash([5, 5]);
+            s3Ctx.strokeStyle = `rgba(249, 115, 22, ${0.2 + Math.sin(s3Pulse) * 0.1})`;
+            s3Ctx.moveTo(100, 100); s3Ctx.lineTo(225, 87); s3Ctx.lineTo(375, 150); s3Ctx.lineTo(100, 100);
+            s3Ctx.stroke();
+            s3Pulse += 0.05;
+            requestAnimationFrame(animateS3);
+        }
+        function animateS3() {
+            const display = document.getElementById('s3-io-display');
+            if (!display) return;
+            setInterval(() => {
+                const p = document.createElement('p');
+                p.className = 'text-green-500 font-mono';
+                p.innerText = `[IO] ${Math.random() > 0.5 ? 'PUT' : 'GET'} /data/${Math.random().toString(36).substring(7)} 200 OK`;
+                display.appendChild(p);
+                if (display.children.length > 8) display.removeChild(display.firstChild);
+                display.scrollTop = display.scrollHeight;
+            }, 2000);
+        }
+        animateS3();
+
+        function showHWSpec(part) {
+            const overlay = document.getElementById('hw-overlay');
+            if (!overlay) return;
+            const title = document.getElementById('hw-title');
+            const desc = document.getElementById('hw-desc');
+            const icon = document.getElementById('hw-icon');
+            overlay.style.opacity = '1';
+            overlay.style.transform = 'translateY(0)';
+            overlay.style.pointerEvents = 'auto';
+
+            const specs = {
+                cpu: ['EPYC™ 9654', '96 Cores | 192 Threads | 3.7GHz Boost | 384MB L3 Cache', 'cpu'],
+                storage: ['Gen5 NVMe RAID', '14,000 MB/s Sequential Read | 5M+ IOPS | PCIE 5.0 Fabric', 'database']
+            };
+
+            title.innerText = specs[part][0];
+            desc.innerText = specs[part][1];
+            icon.innerHTML = `<i data-lucide="${specs[part][2]}"></i>`;
+            lucide.createIcons();
+
+            setTimeout(() => {
+                overlay.style.opacity = '0';
+                overlay.style.transform = 'translateY(10px)';
+                overlay.style.pointerEvents = 'none';
+            }, 6000);
+        }
+
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
