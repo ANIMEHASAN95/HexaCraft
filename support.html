@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>HexaCraft Hosting | Premium Game Server & VPS Hosting</title>
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { corePlugins: { preflight: false } }</script>
+</head>
+
+<body>
+    <!-- Navbar (simplified for the new standalone page) -->
+    <header id="navbar" class="navbar">
+        <div class="nav-island">
+            <a href="index.html" class="nav-logo" style="display: flex; align-items: center; gap: 8px;">
+                <img src="assets/logo.png" alt="HexaCraft"
+                    style="height: 36px; object-fit: contain; filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.4));">
+                <span class="logo-w hex-text-gradient"
+                    style="font-size: 20px; font-weight: 800; letter-spacing: -0.5px; margin-top: 2px;">HexaCraft</span><span
+                    class="logo-g"></span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" class="npill-link">
+                    <i data-lucide="home" width="14" height="14"></i> Home
+                </a>
+                <a href="vps.html" class="npill-link">
+                    <i data-lucide="server" width="14" height="14"></i> VPS
+                </a>
+                <a href="minecraft.html" class="npill-link">
+                    <i data-lucide="gamepad-2" width="14" height="14"></i> Minecraft
+                </a>
+                <div class="nav-drop">
+                    <button class="npill-link">
+                        <i data-lucide="building-2" width="14" height="14"></i> Infrastructure
+                        <i data-lucide="chevron-down" width="13" height="13" class="ndrop-arrow"></i>
+                    </button>
+                    <div class="ndrop-menu">
+                        <a href="infrastructure.html#ddos"><i data-lucide="shield" width="15" height="15"></i> DDoS
+                            Protection</a>
+                        <a href="infrastructure.html#tunnels"><i data-lucide="route" width="15" height="15"></i> Tunnel
+                            IPs</a>
+                        <a href="infrastructure.html#vds"><i data-lucide="cpu" width="15" height="15"></i> VDS
+                            Servers</a>
+                        <a href="infrastructure.html#baremetal"><i data-lucide="hard-drive" width="15" height="15"></i>
+                            Bare Metal</a>
+                        <a href="infrastructure.html#s3"><i data-lucide="database" width="15" height="15"></i> S3
+                            Storage</a>
+                    </div>
+                </div>
+                <div class="nav-drop">
+                    <button class="npill-link">
+                        <i data-lucide="book-open" width="14" height="14"></i> Resources
+                        <i data-lucide="chevron-down" width="13" height="13" class="ndrop-arrow"></i>
+                    </button>
+                    <div class="ndrop-menu">
+                        <a href="support.html"><i data-lucide="help-circle" width="15" height="15"></i> Support
+                            Center</a>
+                        <a href="legal.html"><i data-lucide="file-text" width="15" height="15"></i> Legal Policies</a>
+                        <a href="infrastructure.html"><i data-lucide="building-2" width="15" height="15"></i>
+                            Infrastructure</a>
+                        <a href="knowledgebase.html"><i data-lucide="lightbulb" width="15" height="15"></i> Knowledge
+                            Base</a>
+                        <a href="index.html#faq"><i data-lucide="message-circle" width="15" height="15"></i> FAQs</a>
+                    </div>
+                </div>
+                <a href="support.html" class="npill-link active">
+                    <i data-lucide="headphones" width="14" height="14"></i> Support
+                </a>
+                <a href="https://panel.hexacraft.fun/" class="npill-link mobile-only-link">
+                    <i data-lucide="terminal" width="14" height="14"></i> Game Panel
+                </a>
+                <a href="javascript:void(0)" class="npill-link billing-btn mobile-only-link">
+                    <i data-lucide="credit-card" width="14" height="14"></i> Billing Panel
+                </a>
+                <a href="javascript:void(0)" class="npill-link nav-client-btn mobile-only-link">
+                    <i data-lucide="user" width="14" height="14"></i> Client Area
+                </a>
+            </nav>
+            <div class="nav-actions">
+                <div class="nav-drop">
+                    <button class="nav-panels-btn">
+                        <i data-lucide="layout-grid" width="14" height="14"></i> Panels
+                        <i data-lucide="chevron-down" width="13" height="13" class="ndrop-arrow"></i>
+                    </button>
+                    <div class="ndrop-menu ndrop-right">
+                        <a href="#"><i data-lucide="terminal" width="15" height="15"></i> Game Panel</a>
+                        <a href="#"><i data-lucide="credit-card" width="15" height="15"></i> Billing Panel</a>
+                    </div>
+                </div>
+                <a href="#" class="nav-client-btn">
+                    <i data-lucide="credit-card" width="14" height="14"></i> Client Area
+                </a>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-btn">
+                <i data-lucide="menu" width="22" height="22"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="min-h-screen bg-transparent pt-32 pb-16 font-sans relative z-10">
+        <!-- SUPPORT SECTION -->
+        <section class="py-12 px-4 relative overflow-hidden" id="support">
+            <!-- Background Overlay -->
+            <div class="absolute inset-0 bg-blue-900/5 pointer-events-none"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#0A0E17]"></div>
+
+            <div class="relative max-w-7xl mx-auto z-10 text-white font-sans">
+                <!-- Hero text -->
+                <div class="text-center mb-16">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold mb-6 uppercase tracking-widest">
+                        <span
+                            class="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_8px_#3b82f6] animate-[pulseGlow_2s_infinite]"></span>
+                        24/7 Support Available
+                    </div>
+                    <h2 class="text-4xl sm:text-5xl font-extrabold mb-5 tracking-tight text-white drop-shadow-sm">How
+                        Can We
+                        Help?</h2>
+                    <p class="text-blue-200/70 text-lg max-w-2xl mx-auto mb-10">Find answers quickly in our help center
+                    </p>
+
+                    <!-- Search Bar -->
+                    <div class="relative max-w-2xl mx-auto mb-12">
+                        <input type="text" placeholder="Search for help topics..."
+                            class="w-full pl-14 pr-4 py-4 bg-gray-800/40 backdrop-blur-md border border-gray-700/50 rounded-xl text-white placeholder-gray-500 outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 shadow-xl">
+                        <i data-lucide="search"
+                            class="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5"></i>
+                    </div>
+                </div>
+
+                <!-- Get in Touch Section -->
+                <div class="mb-16">
+                    <h3 class="text-2xl font-bold mb-8 flex items-center border-b border-gray-700/30 pb-3"><i
+                            data-lucide="message-square" class="mr-2 text-blue-400"></i> Get in Touch</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                        <!-- Email Support -->
+                        <a href="mailto:hexacraft0@gmail.com"
+                            class="group relative p-6 bg-gray-800/30 rounded-2xl border border-gray-700/50 hover:bg-gray-800/60 hover:border-blue-500/40 hover:shadow-[0_8px_30px_rgba(59,130,246,0.1)] transition-all duration-300 transform hover:-translate-y-1">
+                            <div
+                                class="w-14 h-14 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-5 text-blue-400 group-hover:scale-110 group-hover:bg-blue-500/20 transition-all">
+                                <i data-lucide="mail"></i>
+                            </div>
+                            <h4 class="text-lg font-semibold mb-2">Email Support</h4>
+                            <p class="text-gray-400 text-sm mb-5 leading-relaxed">Get in touch via email for non-urgent
+                                technical inquiries.</p>
+                            <div class="flex items-center text-xs text-gray-400 gap-2 font-medium mt-auto">
+                                <span class="w-2 h-2 rounded-full bg-blue-400 shadow-[0_0_8px_#60a5fa]"></span>
+                                Response within 24 hours
+                            </div>
+                        </a>
+                        <!-- Discord Support -->
+                        <a href="https://discord.com/invite/hexacraft"
+                            class="group relative p-6 bg-gray-800/30 rounded-2xl border border-gray-700/50 hover:bg-gray-800/60 hover:border-[#5865F2]/40 hover:shadow-[0_8px_30px_rgba(88,101,242,0.15)] transition-all duration-300 transform hover:-translate-y-1">
+                            <div
+                                class="w-14 h-14 rounded-xl bg-[#5865F2]/10 border border-[#5865F2]/20 flex items-center justify-center mb-5 text-[#5865F2] group-hover:scale-110 group-hover:bg-[#5865F2]/20 transition-all">
+                                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.01.105.063.203.156.257a19.942 19.942 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z" />
+                                </svg>
+                            </div>
+                            <h4 class="text-lg font-semibold mb-2">Discord Server</h4>
+                            <p class="text-gray-400 text-sm mb-5 leading-relaxed">Join our community for instant help
+                                from
+                                staff and members.</p>
+                            <div class="flex items-center text-xs text-gray-400 gap-2 font-medium mt-auto">
+                                <span class="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_#22c55e]"></span>
+                                Active Community
+                            </div>
+                        </a>
+                        <!-- Ticket System -->
+                        <a href="#"
+                            class="group relative p-6 bg-gray-800/30 rounded-2xl border border-gray-700/50 hover:bg-gray-800/60 hover:border-pink-500/40 hover:shadow-[0_8px_30px_rgba(236,72,153,0.1)] transition-all duration-300 transform hover:-translate-y-1">
+                            <div
+                                class="w-14 h-14 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center mb-5 text-pink-400 group-hover:scale-110 group-hover:bg-pink-500/20 transition-all">
+                                <i data-lucide="ticket"></i>
+                            </div>
+                            <h4 class="text-lg font-semibold mb-2">Support Ticket</h4>
+                            <p class="text-gray-400 text-sm mb-5 leading-relaxed">Create a private ticket for account
+                                and
+                                billing issues.</p>
+                            <div class="flex items-center text-xs text-gray-400 gap-2 font-medium mt-auto">
+                                <span class="w-2 h-2 rounded-full bg-pink-500 shadow-[0_0_8px_#ec4899]"></span>
+                                Client Area Login needed
+                            </div>
+                        </a>
+                        <!-- Live Chat -->
+                        <a href="#"
+                            class="group relative p-6 bg-gray-800/30 rounded-2xl border border-gray-700/50 hover:bg-gray-800/60 hover:border-green-500/40 hover:shadow-[0_8px_30px_rgba(34,197,94,0.1)] transition-all duration-300 transform hover:-translate-y-1">
+                            <div
+                                class="w-14 h-14 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center justify-center mb-5 text-green-400 group-hover:scale-110 group-hover:bg-green-500/20 transition-all">
+                                <i data-lucide="bot"></i>
+                            </div>
+                            <h4 class="text-lg font-semibold mb-2">Live HexaBot</h4>
+                            <p class="text-gray-400 text-sm mb-5 leading-relaxed">Instantly get answers from our
+                                AI-powered
+                                assistant.</p>
+                            <div class="flex items-center text-xs text-gray-400 gap-2 font-medium mt-auto">
+                                <span
+                                    class="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_#22c55e] animate-pulse"></span>
+                                Currently Only Available on Homepage
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Help Categories Section -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-8 flex items-center border-b border-gray-700/30 pb-3"><i
+                            data-lucide="folder" class="mr-2 text-blue-400"></i> Help Categories</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <a href="knowledgebase.html"
+                            class="group block p-6 bg-gray-800/30 rounded-2xl border border-gray-700/50 hover:border-blue-500/40 hover:bg-gray-800/60 transition-all cursor-pointer">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="p-3.5 rounded-xl bg-gray-700/50 text-blue-400 border border-gray-600/30">
+                                    <i data-lucide="book-open"></i>
+                                </div>
+                                <span
+                                    class="text-blue-400 font-bold text-sm tracking-wide opacity-0 group-hover:opacity-100 transition-all translate-x-[-10px] group-hover:translate-x-0 duration-300">Browse
+                                    Articles <i data-lucide="arrow-right" class="inline w-3 h-3"></i></span>
+                            </div>
+                            <h4 class="text-xl font-bold mb-2 group-hover:text-blue-300 transition-colors">Knowledge
+                                Base
+                            </h4>
+                            <p class="text-gray-400 text-sm">Comprehensive guides and tutorials for server setup.</p>
+                        </a>
+                        <a href="infrastructure.html"
+                            class="group block p-6 bg-gray-800/30 rounded-2xl border border-gray-700/50 hover:border-green-500/40 hover:bg-gray-800/60 transition-all cursor-pointer">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="p-3.5 rounded-xl bg-gray-700/50 text-green-400 border border-gray-600/30">
+                                    <i data-lucide="activity"></i>
+                                </div>
+                                <span
+                                    class="text-green-400 font-bold text-sm tracking-wide opacity-0 group-hover:opacity-100 transition-all translate-x-[-10px] group-hover:translate-x-0 duration-300">Check
+                                    Status <i data-lucide="arrow-right" class="inline w-3 h-3"></i></span>
+                            </div>
+                            <h4 class="text-xl font-bold mb-2 group-hover:text-green-300 transition-colors">System
+                                Status
+                            </h4>
+                            <p class="text-gray-400 text-sm">Real-time monitoring of our global infrastructure.</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="script.js?v=4"></script>
+    <script>
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+    </script>
+</body>
+
+</html>
